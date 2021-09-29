@@ -1,12 +1,16 @@
 <?php
-require_once "../controller/UserController.php"
+require_once "../controller/UserController.php";
+require_once 'RouterClass.php';
 
 
 
-define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
+
+$r = new Router();
+$r->setDefaultRoute("UserController", "getAllUsers");
 
 
-// lee la acción
+/*// lee la acción
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 } else {
@@ -22,7 +26,7 @@ switch ($params[0]){
         break;
 }
 
-/*switch ($params[0]) {
+switch ($params[0]) {
     case 'about': 
         if (isset($params[1])) {
             showAbout($params[1]); 
