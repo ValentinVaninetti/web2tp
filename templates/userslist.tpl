@@ -1,13 +1,9 @@
-{include file="./head.tpl"};
-
-<body>
- <ul>
+  <ul>
  {foreach from=$all_users item=user}
     <li>
-    {$user};
+    {$user->username};
     </li> 
  {/foreach}
     
  </ul>
- {include file="./footer.tpl"}
-</body>
+ 

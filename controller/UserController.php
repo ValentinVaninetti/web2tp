@@ -18,4 +18,6 @@ class UserController{
        $this->userView->showUsers($users);
     }
 
+    
+
 }
