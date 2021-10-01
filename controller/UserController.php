@@ -1,7 +1,7 @@
 <?php
 
-include_once "../model/UserModel.php";
-include_once "../view/UserView.php";
+require_once "../view/UserView.php";
+require_once "../model/UserModel.php";
 
 class UserController{
 
@@ -14,7 +14,7 @@ class UserController{
     }
 
     public function getAllUsers(){
-       $users = $this->userModel->getUsers();
+       $users = $this->userModel->getUsers();       
        $this->userView->showUsers($users);
     }
 

@@ -1,6 +1,6 @@
 <?php
 require_once "../controller/UserController.php";
-require_once 'RouterClass.php';
+require_once "RouterClass.php";
 
 
 
@@ -8,6 +8,7 @@ define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"]
 
 $r = new Router();
 $r->setDefaultRoute("UserController", "getAllUsers");
+$r->route($_GET['action'], $_SERVER['REQUEST_METHOD']);
 
 
 /*// lee la acción

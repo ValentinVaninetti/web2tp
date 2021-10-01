@@ -1,5 +1,5 @@
 <?php
-include_once "../utils/DataBase.php";
+require_once "../utils/DataBase.php";
 
 class UserModel{
 
@@ -11,8 +11,8 @@ class UserModel{
     }
     
     public function getUsers(){
-        $statement = $this->db->prepare("SELECT * from users");
+        $statement = $this->db->prepare("SELECT * FROM users");
         $statement->execute();
-        return $statement->fetchALL(PDO::FETCH_OBJ);
+        return $statement->fetchAll(PDO::FETCH_OBJ);
     }
 }
