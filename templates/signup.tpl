@@ -1,5 +1,10 @@
 {include file="./head.tpl"}
+
 <body>
+
+{include file="./header.tpl"}
+
+{include file="./navbar.tpl"}
 <form method="POST">
   <div class="row">
     <div class="col">
