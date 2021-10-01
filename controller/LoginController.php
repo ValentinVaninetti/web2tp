@@ -28,6 +28,7 @@ class LoginController{
         $email = $_POST['email'];
         $password = $_POST['password'];
         $this->userModel->addNewUser($username,$email,$password);
+        
     }
 
 }

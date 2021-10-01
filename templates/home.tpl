@@ -6,10 +6,7 @@
         lorem ipsum
         </p>
         
-    </div>
-    {include file="./signup.tpl"}
-    <div>
-    {include file="./userslist.tpl"}
-    </div>
+    </div>    
+    
 {include file="./footer.tpl"}
 </body>
