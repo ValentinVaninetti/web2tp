@@ -1,3 +1,1 @@
-<section>
-  <h1>Pagina</h1>
-</section>
+  <h1 class="title">Surf Shop</h1>
