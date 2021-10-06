@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 01, 2021 at 11:17 PM
+-- Generation Time: Oct 06, 2021 at 03:21 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -20,6 +20,49 @@ SET time_zone = "+00:00";
 --
 -- Database: `web2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `category_id` int(11) NOT NULL,
+  `category_name` varchar(60) NOT NULL,
+  `description` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`category_id`, `category_name`, `description`) VALUES
+(1, 'surf_table', 'Different types of Surf tables'),
+(5, 'Surfing_suits', 'Different types of surfing suits, gloves, hats and boots');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `products_id` int(11) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `product_price` int(255) NOT NULL,
+  `product_img` varchar(255) NOT NULL,
+  `products_description` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`products_id`, `product_name`, `category_id`, `product_price`, `product_img`, `products_description`) VALUES
+(3, 'Al merrick', 1, 120, 'https://www.singlequiver.com/26932-superlarge_default/al-merrick-new-flyer.jpg', 'Its a very nice and quality surf table, for experienced surfers, and newbies.'),
+(4, 'Volcom Surf suit', 5, 85, 'https://banzaisurf.com/wp-content/uploads/2021/04/NEOPRENO-VOLCOM-22.jpg', 'High quality wetsuit for men.');
 
 -- --------------------------------------------------------
 
@@ -50,6 +93,19 @@ INSERT INTO `users` (`id_user`, `username`, `email`, `pass`) VALUES
 --
 
 --
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`products_id`),
+  ADD KEY `FK_category_id` (`category_id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -60,10 +116,32 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
