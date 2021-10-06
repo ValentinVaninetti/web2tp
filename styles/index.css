@@ -2,6 +2,18 @@
     font-size: 150px;
     text-align: center;
 }
+.homeBody{
+    background-image: url("../images/Tsunami_by_hokusai_19th_century.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+}
+
 
 
 

@@ -12,11 +12,14 @@ class UserController{
         $this->userModel = new UserModel();
         $this->userView = new UserView();
     }
-
+    
     public function getAllUsers(){
-       $users = $this->userModel->getUsers();       
-       $this->userView->showUsers($users);
-    }
+        $users = $this->userModel->getUsers();       
+        $this->userView->showUsers($users);
+     }
+    
+
+    
 
     
 

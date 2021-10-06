@@ -12,7 +12,7 @@ class HomeController{
     }
 
     public function getHome(){
-        $this->homeview->showHome();
+        $this->homeview->showHome(null);
     }
     
 }

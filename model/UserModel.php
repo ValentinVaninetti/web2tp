@@ -23,4 +23,7 @@ class UserModel{
         );
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
+
+     
+    
 }
