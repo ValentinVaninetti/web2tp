@@ -9,5 +9,6 @@
 <button type="button" class="adm-btn">editar</button>
 <button type="button" class="adm-btn">eliminar</button>
 <div>
-<section>
+</section>
+{include file="./footer.tpl"}
 </body>
