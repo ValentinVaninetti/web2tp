@@ -3,6 +3,8 @@
     {include file="./header.tpl"}
     
     {include file="./navbar.tpl"}    
+
+    {include file="./slides.tpl"}   
         
     {include file="./footer.tpl"}
 </body>

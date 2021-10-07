@@ -3,7 +3,7 @@
     {include file="./header.tpl"}
     {include file="./navbar.tpl"}  
     <section>   
-    {include file="./productsTable.tpl"}
+    {include file="./productsCarousel.tpl"}
     </section>
     {include file="./footer.tpl"}
 

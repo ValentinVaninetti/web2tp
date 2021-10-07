@@ -1,7 +1,7 @@
 {include file="./head.tpl"}
 
 <body>
-{if $condicion == true }
+{if $condicion === true }
     {include file="./adminNavLinks.tpl"}
 {/if}
 <section class="adminTable">

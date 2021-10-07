@@ -17,9 +17,11 @@ class ProductsModel{
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function getCategories(){
-        $statement = $this->db->prepare("SELECT * FROM category");
-        $statement->execute();
+    public function getFilteredProducts($filter_id){
+        $statement = $this->db->prepare("SELECT * FROM products,category WHERE products.category_id = :filter_id");
+        $statement->execute(array($filter_id));
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
+
+  
 }
