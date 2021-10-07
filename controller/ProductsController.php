@@ -19,8 +19,11 @@ class ProductsController{
     public function getAllProducts(){
         
         $products = $this->productsModel->getProducts();
-        $this->productsView->showProducts($products);
+        $categories = $this->productsModel->getCategories();
+        $this->productsView->showProducts($products, $categories);
     }
+
+   
 
     
 }

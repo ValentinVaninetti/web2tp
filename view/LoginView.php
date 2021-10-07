@@ -3,10 +3,9 @@ require_once "../libs/Smarty.class.php";
 
 class LoginView{
 
-    public function showLogin($errorCode){
+    public function showLogin($errorCode = ""){
         $smarty = new Smarty();
-        $smarty->assign('error_code',$errorCode);
-       
+        $smarty->assign('error_code',$errorCode);       
         $smarty->display('../templates/login.tpl');
     }
     

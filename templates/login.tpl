@@ -35,8 +35,8 @@
                     <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Log in</button>
                     <a class="text-muted" href="#!">Forgot password?</a>
                   </div>
-                  {if $error_code != null}
-                    <div class="alert" role="alert">
+                  {if $error_code != ""}
+                    <div class="alert">
                         <p>{$error_code}</p>
                     </div>
                   {/if}
@@ -62,6 +62,7 @@
       </div>
     </div>
   </div>
+  
 </section>
 {include file="./footer.tpl"}
 

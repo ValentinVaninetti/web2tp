@@ -16,4 +16,10 @@ class ProductsModel{
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function getCategories(){
+        $statement = $this->db->prepare("SELECT * FROM category");
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_OBJ);
+    }
 }

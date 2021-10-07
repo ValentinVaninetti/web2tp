@@ -7,7 +7,6 @@ require_once "../controller/AdminController.php";
 require_once "./RouterClass.php";
 
 
-
 define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 
 $r = new Router();

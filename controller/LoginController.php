@@ -1,5 +1,6 @@
 <?php
 
+require_once "../view/AdminView.php";
 require_once "../view/HomeView.php";
 require_once "../view/LoginView.php";
 require_once "../model/UserModel.php";
@@ -10,6 +11,7 @@ class LoginController{
     private $loginView;   
     private $userModel;   
     private $homeView;
+    private $adminView;
     
 
     public function __construct()    {
@@ -17,12 +19,13 @@ class LoginController{
         $this->loginView = new LoginView();
         $this->userModel = new UserModel();        
         $this->homeView = new HomeView();
+        $this->adminView = new AdminView();
         
     }
    
     public function getLogin()
     {
-        $this->loginView->showLogin(null);
+        $this->loginView->showLogin();
     }
 
     public function getSignup()
@@ -44,21 +47,31 @@ class LoginController{
         $userPass = $_POST['userPwd'];  
 
         $allUsers = $this->userModel->getUsers(); 
-        $logged = false;
+        session_start();
+        $_SESSION['logged'] = false;
         $i = 0;
 
-        while ($logged == false) {
-        
-            if(($allUsers[$i]->email=== $userEmail)&&($allUsers[$i]->pass === $userPass)) {
-                $logged = true;
+        while(($_SESSION['logged'] == false)&&($i < count($allUsers))){    
+
+            if(($allUsers[$i]->email=== $userEmail)&&($allUsers[$i]->pass === $userPass)) {   
+                if($allUsers[$i]->isAdmin == 1){
+                    $_SESSION['isAdmin'] = true;
+                    $_SESSION['logged'] = true;
+                    $_SESSION['email'] = $userEmail;
+                }
             }
             else{
                 $i++;
              }   
         }
-        if ($logged == true) {
+        if ($_SESSION['logged'] == true) {
+            if($_SESSION['isAdmin'] == true){
+                $this->adminView->showAdminProducts(null);            
+            }else{
             $this->homeView->showHome($allUsers[$i]);
-        }   
+            }
+        } 
+         
         else {
             $this->loginView->showLogin("Error: Wrong email or password");
         }
