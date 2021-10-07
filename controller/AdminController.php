@@ -15,7 +15,12 @@ class AdminController{
     }
 
     public function getAllAdminProducts(){
+        $condicion = false;
+        session_start();
+        if(isset($_SESSION['isAdmin'])){
+            $condicion = $_SESSION['isAdmin'];
+        }
         $adminProducts = $this->adminModel->getAdminProducts();
-        $this->adminView->showAdminProducts($adminProducts);
+        $this->adminView->showAdminProducts($adminProducts,$condicion);
     }
 }
