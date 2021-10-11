@@ -6,6 +6,7 @@ class CategoriesView {
     public function showCategories($categories){
         $smarty = new Smarty();
         $smarty->asign('all_categories',$categories);
-        $smarty->display();
+        $smarty->display("../templates/products.tpl");
+        
     }
 }

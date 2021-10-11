@@ -9,5 +9,6 @@ class ProductsView {
         $smarty->assign('allCategories', $categories);
         $smarty->display("../templates/products.tpl");
         
+        
     }
 }

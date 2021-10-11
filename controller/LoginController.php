@@ -66,7 +66,7 @@ class LoginController{
         }
         if ($_SESSION['logged'] == true) {
             if($_SESSION['isAdmin'] == true){
-                $this->adminView->showAdminProducts("","");            
+                $this->adminView->showAdminProducts("","","");            
             }else{
             $this->homeView->showHome($allUsers[$i]);
             }

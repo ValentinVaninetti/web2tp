@@ -1,9 +1,9 @@
 {include file="./head.tpl"}
-<body>
+<body class="homeBody">
     {include file="./header.tpl"}
     {include file="./navbar.tpl"}  
-    <section>   
-    {include file="./productsCarousel.tpl"}
+    <section class="productSection">   
+    {include file="./productsCards.tpl"}
     </section>
     {include file="./footer.tpl"}
 

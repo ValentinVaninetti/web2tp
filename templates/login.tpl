@@ -1,6 +1,6 @@
 {include file="./head.tpl"}
 
-<body>
+<body class="homeBody">
 {include file="./header.tpl"}
 {include file="./navbar.tpl"} 
 

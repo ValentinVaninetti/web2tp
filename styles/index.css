@@ -9,8 +9,14 @@
     background-position: center center;
     background-attachment: fixed;
 }
+
 .header{
     display: flex;
     flex-direction: row;
 }
+
+.productSection{
+    background-color: lightsalmon;
+}
+
 
