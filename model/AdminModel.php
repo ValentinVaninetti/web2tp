@@ -10,6 +10,7 @@ class AdminModel{
     {
         $this->db = DataBase::getDataBase();
     }
+    
     public function getAdminProducts()
     {
         $statement = $this->db->prepare("SELECT * FROM products");
@@ -33,19 +34,16 @@ class AdminModel{
         );
     }
 
-    public function editProduct($products_id ,$product_name, $category_id,$product_price, $imgUrl, $product_description)
-    {      
-
-        $statement = $this->db->prepare("UPDATE products SET product_name=?, category_id=?, product_price=?, product_img=?, product_description WHERE products_id=?");
-        $statement->execute(
-            array($product_name, $category_id,$product_price, $imgUrl, $product_description,$products_id)
-        );   
-        
+    public function editProduct($productName, $categoryid,$productPrice, $imgUrl, $productDescription, $productid)
+    {          
+       $statement = $this->db->prepare("UPDATE products SET product_name=?, category_id=?, product_price=?, product_img=?,product_description=? WHERE products_id = ?");
+       $statement->execute(
+           array($productName, $categoryid,$productPrice, $imgUrl, $productDescription, $productid)); 
     }
        
     public function addCategory($category_name,$description)
     {
-       $statement = $this->db->prepare("INSERT INTO category ( category_name, description) VALUES (?,?)");
+        $statement = $this->db->prepare("INSERT INTO category ( category_name, description) VALUES (?,?)");
         $statement->execute(
             array( $category_name ,$description)
         );
@@ -57,5 +55,10 @@ class AdminModel{
         $statement->execute(
             array($category_id)
         );
+    }
+
+    public function editCategory($category_name, $category_description, $category_id){
+        $statement = $this->db->prepare("UPDATE category SET category_name=?, description=? WHERE category_id = ?");
+        $statement->execute(array($category_name, $category_description, $category_id));
     }
 }

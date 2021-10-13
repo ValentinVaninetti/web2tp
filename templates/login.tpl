@@ -18,7 +18,7 @@
                   <h4 class="mt-1 mb-5 pb-1">The team welcomes you</h4>
                 </div>
 
-                <form method="POST">
+                <form method="POST" action="checklogin">
                   <p>Please login to your account</p>
 
                   <div class="form-outline mb-4">

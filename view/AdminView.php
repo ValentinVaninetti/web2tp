@@ -7,10 +7,10 @@ class AdminView{
     function __construct(){
         $this->smarty = new Smarty();
     }
-    public function showAdminProducts($products ,$condicion, $Categories){
+    public function showAdminProducts($products ,$condicion, $categories){
         $this->smarty->assign('all_products', $products);
         $this->smarty->assign('condicion', $condicion);
-        $this->smarty->assign('allCategories', $Categories);
+        $this->smarty->assign('allCategories', $categories);
         $this->smarty->display("../templates/productsAdmin.tpl");
         
     }

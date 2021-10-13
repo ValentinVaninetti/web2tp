@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
      
-    let editButtons = document.querySelectorAll('.buttonsEdit');
+    /*let editButtons = document.querySelectorAll('.buttonsEdit');
     
     for(let i = 0; i < editButtons.length; i++){
         
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         divEdit.classList.add("displayEdit");
        
-    }
+    }*/
 
 
 

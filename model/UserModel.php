@@ -15,14 +15,20 @@ class UserModel{
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function getUserByEmail($email){
+        $statement = $this->db->prepare("SELECT * FROM users WHERE email = ?");
+        $statement->execute(array($email));
+        return $statement->fetch(PDO::FETCH_OBJ);
+    }
     
-    public function addNewUser($username,$email,$password){
-        $sql = "INSERT INTO users(username,email,pass) VALUES(?,?,?)";
-        $statement = $this->db->prepare($sql);
+    public function addNewUser($username,$email,$password,$isAdmin){
+        
+        $statement = $this->db->prepare("INSERT INTO users(username,email,pass,isAdmin) VALUES(?,?,?,?)");
         $statement->execute(
-            array($username, $email, $password)
+            array($username, $email, $password,$isAdmin)
         );
-        return $statement->fetchAll(PDO::FETCH_OBJ);
+        return $statement->fetch(PDO::FETCH_OBJ);
     }
 
      

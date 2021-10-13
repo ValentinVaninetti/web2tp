@@ -15,7 +15,7 @@
     {foreach from=$all_products item=$product}
       <tr>        
         <td>{$product->product_name}</td>
-        <td>{$product->product_price}</td>
+        <td>${$product->product_price}</td>
         {foreach from=$allCategories item=$category}          
            {if $category->category_id == $product->category_id}
              <td>{$category->category_name}</td>
@@ -23,34 +23,30 @@
         {/foreach}
         
         <td><img src="{$product->product_img}" width="200" height="200"></td>
-        <td><p>{$product->products_description}</p></td>
-        <td>        
-        <button class="buttonsEdit" id={$product->products_id}>Edit</button>
-            <div class="divEdit" id="{$product->products_id}">
-              <form method="POST" action="editProduct" class="edit-form">
-                  <select name="category">
-                      <option value=""></option>
-                      {foreach from=$allCategories item=$category}
-                      <option value="{$category->category_id}">{$category->category_name}</option>                  
-                      {/foreach}                
-                  </select>
-                  <input name="productName" type="text" placeholder="{$product->product_name}">
-                  <input name="productPrice" type="text" placeholder="{$product->product_price}">
-                  <input name="imgUrl" type="text" placeholder="{$product->product_img}">
-                  <input name="productDescription" type="text" placeholder="{$product->product_description}">                
-                  <button type="submit" id="{$product->products_id}">edit</button>
-                  <input type="hidden" name="productid" value="{$product->products_id}">
-              </form>    
-            </div>  
+        <td><p>{$product->product_description}</p></td>
+        <td>    
             <form method="POST" action="deleteProduct">
-            <button type="submit" id={$product->products_id}>Delete</button>        
-            <input type="hidden" name="productid" value={$product->products_id}>
+              <button type="submit" id={$product->products_id}>Delete</button>        
+              <input type="hidden" name="productid" value={$product->products_id}>
+            </form>   
+                  
+            <form method="POST" action="editProduct">
+              <select name="categoryEdit">
+              <option value=""></option>
+              {foreach from=$allCategories item=$category}
+                <option value="{$category->category_id}">{$category->category_name}</option>                  
+              {/foreach}                
+              </select>
+              <input name="productNameEdit" type="text" placeholder="{$product->product_name}">            
+              <input name="productPriceEdit" type="text" placeholder="{$product->product_price}">
+              <input name="imgUrlEdit" type="text" placeholder="{$product->product_img}">
+              <input name="productDescriptionEdit" type="text" placeholder="{$product->product_description}">
+              <input type="hidden" name="productidEdit" value={$product->products_id}>
+              <button type="submit" id="{$product->products_id}">Edit</button>
             </form>
-        </td>
-        
+        </td>        
       </tr>
-    {/foreach}
-    
+    {/foreach}    
   </tbody>
 </table>
 <div>
@@ -67,9 +63,6 @@
           <input name="imgUrl" type="text" placeholder="image url">
           <input name="productDescription" type="text" placeholder="Product Description">
           <button type="submit" id="button-add">add</button>
-
       </form>
-  </div>   
-            
-        
+  </div>          
 <div>

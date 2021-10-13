@@ -3,6 +3,7 @@
 require_once "../utils/DataBase.php";
 
 class CategoriesModel{
+    
     private $db;
 
     public function __construct(){

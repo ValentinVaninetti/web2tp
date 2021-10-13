@@ -17,16 +17,17 @@
     $r->addRoute("signup", "POST", "LoginController", "newUser");
     $r->addRoute("products", "GET","ProductsController", "getAllProducts");
     $r->addRoute("productsAdmin", "GET", "AdminController", "getAllAdminProducts");
-    $r->addRoute("addProduct", "POST", "AdminController", "AdminAddProducts");
-    $r->addRoute("deleteProduct", "POST", "AdminController", "AdminDeletesProducts");
-    $r->addRoute("editProduct", "POST", "AdminController", "AdminEditProducts");
+    $r->addRoute("addProduct", "POST", "AdminController", "adminAddProducts");
+    $r->addRoute("deleteProduct", "POST", "AdminController", "adminDeletesProducts");
+    $r->addRoute("editProduct", "POST", "AdminController", "adminEditProducts");
     $r->addRoute("login", "GET", "LoginController", "getLogin");
-    $r->addRoute("login", "POST", "LoginController", "checkLogin");
+    $r->addRoute("checklogin", "POST", "LoginController", "checkLogin");
     $r->addRoute("search", "POST", "ProductsController", "getFilteredProducts");
     $r->addRoute("usersAdmin", "GET", "AdminController", "getAdminUsers");
     $r->addRoute("categoriesAdmin", "GET", "AdminController", "getAdminCategories");
     $r->addRoute("addCategory", "POST", "AdminController", "adminAddCategories");
     $r->addRoute("deleteCategory", "POST", "AdminController", "adminDeletesCategories");
+    $r->addRoute("editCategory", "POST", "AdminController", "adminEditCategories");
     $r->addRoute("logout", "GET", "LoginController", "logout");
     $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']);
 

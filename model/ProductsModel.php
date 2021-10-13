@@ -18,10 +18,12 @@ class ProductsModel{
         return $statement->fetchAll(PDO::FETCH_OBJ); // retorna lo que ejecuto en el $statement
     }
 
-    public function getFilteredProducts($filter_id = null){
-        $statement = $this->db->prepare("SELECT * FROM products,category WHERE products.category_id =filter_id");
+    public function getFilteredProducts($filter_id = null){   
+             
+        $statement = $this->db->prepare("SELECT * FROM products WHERE category_id = ?");
         $statement->execute(array($filter_id));
         return $statement->fetchAll(PDO::FETCH_OBJ);
+       
     }
 
   

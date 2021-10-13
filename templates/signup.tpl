@@ -5,7 +5,7 @@
 {include file="./header.tpl"}
 
 {include file="./navbar.tpl"}
-<form method="POST">
+<form method="POST" action="signup">
   <div class="row">
     <div class="col">
       <input type="text" class="form-control" name="username" placeholder="username">

@@ -23,7 +23,7 @@
       
       </li> 
       <li class="nav-item">
-      <a class="nav-link" href="categoriesAdmin">categoriesAdmin</a>
+      <a class="nav-link" href="categoriesAdmin">CategoriesAdmin</a>
     
       </li>
 
