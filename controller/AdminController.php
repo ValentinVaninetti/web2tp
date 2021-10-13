@@ -5,6 +5,7 @@ require_once "../model/AdminModel.php";
 require_once "../view/AdminView.php";
 require_once "../controller/CategoriesController.php";
 require_once "../controller/UserController.php";
+require_once "../helper/AuthHelper.php";
 
 class AdminController{
 
@@ -12,6 +13,7 @@ class AdminController{
     private $adminView;
     private $categoriesController;
     private $userController;
+    private $authHelper;
 
     public function __construct()
     {
@@ -19,6 +21,7 @@ class AdminController{
         $this->adminView = new AdminView();  
         $this->categoriesController = new CategoriesController();    
         $this->userController = new UserController(); 
+        $this->authHelper = new AuthHelper();
     }
 
     public function getAdminUsers()
@@ -35,6 +38,7 @@ class AdminController{
 
     public function adminAddCategories()
     {
+        $this->authHelper->checkLoggedIn();
         $category_name = $_POST['category-name'];
         $description = $_POST['category-description'];
         if((!empty($category_name))&&(!empty($description))){
@@ -48,14 +52,17 @@ class AdminController{
 
     public function adminDeletesCategories()
     {
+        $this->authHelper->checkLoggedIn();
         $category_id = $_POST['category-id'];
         $this->adminModel->deleteCategory($category_id);        
         $this->getAdminCategories();
         
     }
 
-    public function adminEditCategories(){
+    public function adminEditCategories()
+    {
         
+        $this->authHelper->checkLoggedIn();
         $category_id = $_POST['category-id'];
         $category_name = $_POST['category_name'];
         $category_description = $_POST['category_description'];
@@ -81,6 +88,7 @@ class AdminController{
 
     public function adminAddProducts()
     {
+        $this->authHelper->checkLoggedIn();
         $product_name = $_POST['productName'];
         $category_id = $_POST['category'];
         $product_price = $_POST['productPrice'];
@@ -97,6 +105,7 @@ class AdminController{
 
     public function adminDeletesProducts()
     {
+        $this->authHelper->checkLoggedIn();
         $products_id = $_POST['productid'];
         $this->adminModel->deleteProduct($products_id);
         $this->getAllAdminProducts();
@@ -105,6 +114,7 @@ class AdminController{
 
     public function adminEditProducts()
     {
+        $this->authHelper->checkLoggedIn();
         $categories = $this->categoriesController->getAllCategories();
         $productid = $_POST['productidEdit'];
         $productName = $_POST['productNameEdit'];

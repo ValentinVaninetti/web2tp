@@ -21,7 +21,7 @@
     $r->addRoute("deleteProduct", "POST", "AdminController", "adminDeletesProducts");
     $r->addRoute("editProduct", "POST", "AdminController", "adminEditProducts");
     $r->addRoute("login", "GET", "LoginController", "getLogin");
-    $r->addRoute("checklogin", "POST", "LoginController", "checkLogin");
+    $r->addRoute("login", "POST", "LoginController", "checkLogin");
     $r->addRoute("search", "POST", "ProductsController", "getFilteredProducts");
     $r->addRoute("usersAdmin", "GET", "AdminController", "getAdminUsers");
     $r->addRoute("categoriesAdmin", "GET", "AdminController", "getAdminCategories");

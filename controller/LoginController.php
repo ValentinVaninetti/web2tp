@@ -4,13 +4,16 @@ require_once "../view/AdminView.php";
 require_once "../view/HomeView.php";
 require_once "../view/LoginView.php";
 require_once "../model/UserModel.php";
+require_once "../controller/HomeController.php";
 require_once "../controller/UserController.php";
+require_once "../helper/AuthHelper.php";
 
 class LoginController{
 
     private $loginView;   
     private $userModel;   
     private $homeView;
+    private $authHelper;
     private $adminView;
     
 
@@ -20,8 +23,10 @@ class LoginController{
         $this->userModel = new UserModel();        
         $this->homeView = new HomeView();
         $this->adminView = new AdminView();
+        $this->homeController = new HomeController();   
+        $this->authHelper = new AuthHelper();    
         
-    }
+    } 
    
     public function getLogin()
     {
@@ -42,18 +47,39 @@ class LoginController{
         
     }
 
-    public function checkLogin($email){
-               
-        $user = $this->userModel->getUserByEmail($email);
+    public function checkLogin(){               
+        
         if ((isset( $_POST['userEmail'])) && (isset($_POST['userPwd'])))    
         {
             $email = $_POST['userEmail'];
             $pass = $_POST['userPwd'];
-            if (password_verify($pass,($user->pass))){
-                $this->homeView->showHome();
+
+            $user = $this->userModel->getUserByEmail($email);
+
+            if ($user && password_verify($pass,($user->pass))){
+                if($user->isAdmin == 1){
+                    session_start();
+                    $_SESSION['islogged'] = true;
+                    $_SESSION['isAdmin'] = true;
+                    $_SESSION['email'] = $email;
+                    $this->adminView->showAdminUsers(null);
+                    
+                }
+                session_start();
+                $_SESSION['islogged'] = true;
+                $_SESSION['email'] = $email;
+                $logged = true;
+                $this->homeView->showHome($user, $logged);
+                
+            }else{
+                $this->loginView->showLogin();
             }
             
         }
+    }
+    public function logout(){
+        $this->authHelper->logout();
+        $this->homeView->showHomeLocation();
     }
     
 }

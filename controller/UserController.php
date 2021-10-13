@@ -10,12 +10,13 @@ class UserController{
 
     public function __construct(){
         $this->userModel = new UserModel();
-        
+        $this->loginView = new LoginView();
     }
     public function getAllUsers(){
         return $this->userModel->getUsers();       
        
      }
+    
     
 
     

@@ -8,8 +8,7 @@
     
         {include file="./productsTable.tpl"}
     
-    </section>
-    <script src="./js/index.js"></script>
+    </section>    
     {include file="./footer.tpl"}
     
     
