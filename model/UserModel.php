@@ -15,6 +15,7 @@ class UserModel{
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
+    
     public function addNewUser($username,$email,$password){
         $sql = "INSERT INTO users(username,email,pass) VALUES(?,?,?)";
         $statement = $this->db->prepare($sql);

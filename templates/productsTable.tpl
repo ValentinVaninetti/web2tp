@@ -24,12 +24,28 @@
         
         <td><img src="{$product->product_img}" width="200" height="200"></td>
         <td><p>{$product->products_description}</p></td>
-        <td><button type="submit">Edit</button>
-        
-        <form method="POST" action="deleteProduct">
-        <button type="submit" id={$product->product_id}>Delete</button>        
-        <input type="hidden" name="productid" value={$product->product_id}>
-        </form>
+        <td>        
+        <button class="buttonsEdit" id={$product->products_id}>Edit</button>
+            <div class="divEdit" id="{$product->products_id}">
+              <form method="POST" action="editProduct" class="edit-form">
+                  <select name="category">
+                      <option value=""></option>
+                      {foreach from=$allCategories item=$category}
+                      <option value="{$category->category_id}">{$category->category_name}</option>                  
+                      {/foreach}                
+                  </select>
+                  <input name="productName" type="text" placeholder="{$product->product_name}">
+                  <input name="productPrice" type="text" placeholder="{$product->product_price}">
+                  <input name="imgUrl" type="text" placeholder="{$product->product_img}">
+                  <input name="productDescription" type="text" placeholder="{$product->product_description}">                
+                  <button type="submit" id="{$product->products_id}">edit</button>
+                  <input type="hidden" name="productid" value="{$product->products_id}">
+              </form>    
+            </div>  
+            <form method="POST" action="deleteProduct">
+            <button type="submit" id={$product->products_id}>Delete</button>        
+            <input type="hidden" name="productid" value={$product->products_id}>
+            </form>
         </td>
         
       </tr>
@@ -37,3 +53,23 @@
     
   </tbody>
 </table>
+<div>
+  <div class="divAdd">
+      <form method="POST" action="addProduct" enctype="multipart/form-data">
+          <select name="category">
+              <option value=""></option>
+              {foreach from=$allCategories item=$category}
+              <option value="{$category->category_id}">{$category->category_name}</option>                  
+              {/foreach}                
+          </select>
+          <input name="productName" type="text" placeholder="Product name">
+          <input name="productPrice" type="text" placeholder="Product Price">
+          <input name="imgUrl" type="text" placeholder="image url">
+          <input name="productDescription" type="text" placeholder="Product Description">
+          <button type="submit" id="button-add">add</button>
+
+      </form>
+  </div>   
+            
+        
+<div>

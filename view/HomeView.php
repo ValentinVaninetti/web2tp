@@ -7,9 +7,8 @@ class HomeView{
         
     }
 
-    public function showHome($user){
-        $smarty = new Smarty();
-        $smarty->assign('currentUser', $user);        
+    public function showHome(){
+        $smarty = new Smarty();               
         $smarty->display('../templates/home.tpl');
     }
 }

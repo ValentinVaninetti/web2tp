@@ -15,5 +15,15 @@ class AdminView{
         
     }
 
+    public function showAdminUsers($adminUsers){
+        $this->smarty->assign('all_users', $adminUsers);
+        $this->smarty->display("../templates/usersAdmin.tpl");
+    }
+
+    public function showAdminCategories($adminCategories){
+        $this->smarty->assign('all_categories', $adminCategories);
+        $this->smarty->display("../templates/categoriesAdmin.tpl");
+    }
+
    
 }

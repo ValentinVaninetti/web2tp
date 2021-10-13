@@ -25,15 +25,24 @@ class AdminModel{
         );
     }  
 
-    public function deleteProduct($product_id)
+    public function deleteProduct($products_id)
     {
-        $statement = $this->db->prepare("DELETE FROM `products` WHERE `products`.`products_id` = ?");
+        $statement = $this->db->prepare("DELETE FROM products WHERE products_id = ?");
         $statement->execute(
-            array($product_id)
+            array($products_id)
         );
     }
-   
-    
+
+    public function editProduct($products_id ,$product_name, $category_id,$product_price, $imgUrl, $product_description)
+    {      
+
+        $statement = $this->db->prepare("UPDATE products SET product_name=?, category_id=?, product_price=?, product_img=?, product_description WHERE products_id=?");
+        $statement->execute(
+            array($product_name, $category_id,$product_price, $imgUrl, $product_description,$products_id)
+        );   
+        
+    }
+       
     public function AddCategory($description, $category_name)
     {
        $statement = $this->db->prepare("INSERT INTO category (description , category_name) VALUES (?,?)");

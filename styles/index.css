@@ -18,5 +18,10 @@
 .productSection{
     background-color: lightsalmon;
 }
+.divEdit{
+    display: none;
+}
 
-
+.displayEdit{
+    display: flex;
+}

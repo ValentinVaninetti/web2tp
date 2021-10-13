@@ -1,4 +1,5 @@
 <?php
+
 require_once "../utils/DataBase.php";
 
 class CategoriesModel{

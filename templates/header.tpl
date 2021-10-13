@@ -1,8 +1,10 @@
   <header class="Header">
     <div class="titleContainer" >
     <h1 class="title">Surf Shop</h1>
+    </div>    
+    <div>
+    <a href="logout"><button type="button">Logout</button></a>
     </div>
-    <div class="username"><p>Hello! {$currentUser->username}, nice to see you around.</p></div>
   </header>
     
   

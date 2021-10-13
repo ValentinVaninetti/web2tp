@@ -1,6 +1,6 @@
 <?php
 
-require_once "../model/ProductsModel.php";
+require_once "../model/ProductsModel.php"; //traemos el productsModel que acabamos de hacer
 require_once "../view/ProductsView.php";
 require_once "../controller/CategoriesController.php";
 

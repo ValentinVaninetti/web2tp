@@ -51,9 +51,9 @@ class LoginController{
         $_SESSION['logged'] = false;
         $i = 0;
 
-        while(($_SESSION['logged'] == false)&&($i < count($allUsers))){    
+        while(($_SESSION['logged'] == false)&&($i <= count($allUsers))){    
 
-            if(($allUsers[$i]->email=== $userEmail)&&($allUsers[$i]->pass === $userPass)) {   
+            if(($allUsers[$i]->email == $userEmail)&&($allUsers[$i]->pass == $userPass)) {   
                 if($allUsers[$i]->isAdmin == 1){
                     $_SESSION['isAdmin'] = true;
                     $_SESSION['logged'] = true;
@@ -64,18 +64,25 @@ class LoginController{
                 $i++;
              }   
         }
-        if ($_SESSION['logged'] == true) {
-            if($_SESSION['isAdmin'] == true){
-                $this->adminView->showAdminProducts("","","");            
-            }else{
-            $this->homeView->showHome($allUsers[$i]);
-            }
+        if(($_SESSION['logged'] == true)&&($_SESSION['isAdmin'] == true)) {
+            
+                $this->adminView->showAdminUsers(null);            
+            
+           
         } 
+        else if ($_SESSION['logged'] == true){
+            $this->homeView->showHome();
+            }
          
         else {
             $this->loginView->showLogin("Error: Wrong email or password");
         }
        
+    }
+    public function logout(){
+        session_start();
+        session_destroy();
+        $this->loginView->showLogin();
     }
     
 }

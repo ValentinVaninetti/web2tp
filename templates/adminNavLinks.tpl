@@ -16,8 +16,17 @@
       <li class="nav-item">
       <a class="nav-link" href="productsAdmin">ProductsAdmin</a>
       
-        </li>
+        </li>    
       
+      <li class="nav-item">
+        <a class="nav-link" href="usersAdmin">UsersAdmin</a>
+      
+      </li> 
+      <li class="nav-item">
+      <a class="nav-link" href="categoriesAdmin">categoriesAdmin</a>
+    
+      </li>
+
     </ul>
     
   </div>
