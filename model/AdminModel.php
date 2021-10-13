@@ -43,11 +43,19 @@ class AdminModel{
         
     }
        
-    public function AddCategory($description, $category_name)
+    public function addCategory($category_name,$description)
     {
-       $statement = $this->db->prepare("INSERT INTO category (description , category_name) VALUES (?,?)");
+       $statement = $this->db->prepare("INSERT INTO category ( category_name, description) VALUES (?,?)");
         $statement->execute(
-            array($description, $category_name)
+            array( $category_name ,$description)
+        );
+    }
+
+    public function deleteCategory($category_id)
+    {
+        $statement = $this->db->prepare("DELETE FROM category WHERE category_id = ?");
+        $statement->execute(
+            array($category_id)
         );
     }
 }

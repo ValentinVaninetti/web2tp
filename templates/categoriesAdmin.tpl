@@ -19,6 +19,12 @@
             <td>
                 {$category->description}
             </td>
+            <td>
+            <form method="POST" action="deleteCategory">
+            <button type="submit" id={$category->category_id}>Delete</button>        
+            <input type="hidden" name="category-id" value={$category->category_id}>
+            </form>
+            </td>
             
         </tr>    
         
@@ -27,8 +33,8 @@
 </table>
 <div class="divAdd">
     <form method="POST" action="addCategory" enctype="multipart/form-data">       
-        <input name="category-name" type="text" placeholder="Product name">
-        <input name="category-description" type="text" placeholder="Product Price">       
+        <input name="category-name" type="text" placeholder="category name">
+        <input name="category-description" type="text" placeholder="category description">       
         <button type="submit" id="button-add">add</button>
 
     </form>

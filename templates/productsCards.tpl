@@ -8,6 +8,7 @@
                 
         {/foreach}                
       </select>
+      <input type="hidden" name="category-id" value={$category->category_id}>
     <button type="submit">Search</button>
     </div>
   </form>

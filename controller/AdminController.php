@@ -32,6 +32,25 @@ class AdminController{
     }
 
     public function adminAddCategories(){
+        $category_name = $_POST['category-name'];
+        $description = $_POST['category-description'];
+        if((!empty($category_name))&&(!empty($description))){
+            $this->adminModel->addCategory($category_name,$description);
+            $categories = $this->getAdminCategories();
+            $this->adminView->showAdminCategories($categories);
+        } else {
+            $this->adminView->showAdminCategories("error");
+        }
+        
+       
+    }
+
+    public function adminDeletesCategories(){
+        $category_id = $_POST['category-id'];
+        $this->adminModel->deleteCategory($category_id);
+        
+        $categories = $this->getAdminCategories();
+        $this->adminView->showAdminCategories($categories);
         
     }
 

@@ -28,7 +28,7 @@ class ProductsController{
     public function getFilteredProducts()
     {
         if(isset($_POST['category'])){
-            $filter = $_POST['category'];
+            $filter = $_POST['category-id'];
             $products = $this->productsModel->getFilteredProducts($filter);
             $categories = $this->categoriesController->getAllCategories();
             $this->productsView->showProducts($products,$categories);

@@ -25,6 +25,8 @@
     $r->addRoute("search", "POST", "ProductsController", "getFilteredProducts");
     $r->addRoute("usersAdmin", "GET", "AdminController", "getAdminUsers");
     $r->addRoute("categoriesAdmin", "GET", "AdminController", "getAdminCategories");
+    $r->addRoute("addCategory", "POST", "AdminController", "adminAddCategories");
+    $r->addRoute("deleteCategory", "POST", "AdminController", "adminDeletesCategories");
     $r->addRoute("logout", "GET", "LoginController", "logout");
     $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']);
 
