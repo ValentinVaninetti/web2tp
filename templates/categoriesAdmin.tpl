@@ -43,3 +43,4 @@
     </div> 
         {include file="./footer.tpl"}
 </body>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>

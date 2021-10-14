@@ -3,21 +3,17 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-     
+    <ul class="navbar-nav">     
      
       <li class="nav-item">
-      <a class="nav-link" href="productsAdmin">ProductsAdmin</a>
-      
-        </li>    
+        <a class="nav-link" href="productsAdmin">ProductsAdmin</a>      
+      </li>    
       
       <li class="nav-item">
-        <a class="nav-link" href="usersAdmin">UsersAdmin</a>
-      
+        <a class="nav-link" href="usersAdmin">UsersAdmin</a>      
       </li> 
       <li class="nav-item">
-      <a class="nav-link" href="categoriesAdmin">CategoriesAdmin</a>
-    
+        <a class="nav-link" href="categoriesAdmin">CategoriesAdmin</a>    
       </li>
 
     </ul>

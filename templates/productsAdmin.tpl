@@ -1,17 +1,9 @@
     {include file="./head.tpl"}
-
 <body>
-    {include file="./header.tpl" }
-    
-    
-    
-
+    {include file="./header.tpl"}    
     <section class="adminTable">
-    
         {include file="./productsTable.tpl"}
-    
-    </section>    
+    </section> 
     {include file="./footer.tpl"}
-    
-    
 </body>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>

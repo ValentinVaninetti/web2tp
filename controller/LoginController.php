@@ -58,18 +58,19 @@ class LoginController{
             $user = $this->userModel->getUserByEmail($email);
 
             if ($user && password_verify($pass,($user->pass))){
-                if($user->isAdmin == 1){
+                if($user->isAdmin == 1){ //admin email: admin@admin.com, admin password: admin//
                     session_start();
                     $_SESSION['islogged'] = true;
                     $_SESSION['isAdmin'] = true;
                     $_SESSION['email'] = $email;                    
                     $this->homeView->showHome();
                     
-                }
+                }else{
                 session_start();
                 $_SESSION['islogged'] = true;
                 $_SESSION['email'] = $email;                
                 $this->homeView->showHome();
+                }
                 
                 
             }else{

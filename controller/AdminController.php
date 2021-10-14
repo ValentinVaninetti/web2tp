@@ -1,6 +1,6 @@
 
 <?php
-
+//admin email: admin@admin.com, admin password: admin//
 require_once "../model/AdminModel.php";
 require_once "../view/AdminView.php";
 require_once "../controller/CategoriesController.php";
@@ -46,8 +46,8 @@ class AdminController{
             $this->getAdminCategories();
         } else {
             $this->getAdminCategories();
-        }        
-       
+        } 
+
     }
 
     public function adminDeletesCategories()
@@ -55,13 +55,11 @@ class AdminController{
         $this->authHelper->checkLoggedIn();
         $category_id = $_POST['category-id'];
         $this->adminModel->deleteCategory($category_id);        
-        $this->getAdminCategories();
-        
+        $this->getAdminCategories();        
     }
 
     public function adminEditCategories()
-    {
-        
+    {        
         $this->authHelper->checkLoggedIn();
         $category_id = $_POST['category-id'];
         $category_name = $_POST['category_name'];
@@ -69,7 +67,6 @@ class AdminController{
 
         $this->adminModel->editCategory($category_name, $category_description,$category_id);
         $this->getAdminCategories();
-
     }
 
     public function getAllAdminProducts()
@@ -81,9 +78,7 @@ class AdminController{
         }
         $adminProducts = $this->adminModel->getAdminProducts();
         $categories = $this->categoriesController->getAllCategories();
-        $this->adminView->showAdminProducts($adminProducts,$condicion, $categories);
-        
-       
+        $this->adminView->showAdminProducts($adminProducts,$condicion, $categories);       
     }    
 
     public function adminAddProducts()
@@ -125,8 +120,7 @@ class AdminController{
           
         $this->adminModel->editProduct($productName, $categoryid, $productPrice, $imgUrl, $productDescription, $productid);
         $this->getAllAdminProducts();
-       
-        
+               
     }
    
 }

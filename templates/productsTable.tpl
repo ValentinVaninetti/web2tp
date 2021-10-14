@@ -1,6 +1,5 @@
 
 <table class="table table-dark">
-
   <thead>
     <tr>      
       <th scope="col">Name</th>
@@ -32,10 +31,10 @@
                   
             <form method="POST" action="editProduct">
               <select name="categoryEdit">
-              <option value=""></option>
-              {foreach from=$allCategories item=$category}
-                <option value="{$category->category_id}">{$category->category_name}</option>                  
-              {/foreach}                
+                <option value=""></option>
+                  {foreach from=$allCategories item=$category}
+                    <option value="{$category->category_id}">{$category->category_name}</option>                  
+                  {/foreach}                
               </select>
               <input name="productNameEdit" type="text" placeholder="{$product->product_name}">            
               <input name="productPriceEdit" type="text" placeholder="{$product->product_price}">
