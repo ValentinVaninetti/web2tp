@@ -10,11 +10,17 @@
       <li class="nav-item">
         <a class="nav-link" href="login">Login</a>
       </li>
+     
       <li class="nav-item">
-        <a class="nav-link" href="products">Products</a>
-      </li>
+        <a class="nav-link" href="products">Products</a>      
+      </li>     
       
     </ul>
-    
+    {if isset($smarty.session.islogged)}
+    <a href="logout" class="btn btn-primary">Logout</a>
+    {/if}
+    {if isset($smarty.session.isAdmin) && $smarty.session.isAdmin}
+    {include file="./adminNavLinks.tpl"}
+    {/if}
   </div>
 </nav>

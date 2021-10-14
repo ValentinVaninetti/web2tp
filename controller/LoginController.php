@@ -44,10 +44,11 @@ class LoginController{
         $password = password_hash($_POST['password'],PASSWORD_BCRYPT);
         $isAdmin = 0;
         $this->userModel->addNewUser($username,$email,$password,$isAdmin);
+        $this->loginView->showLogin();
         
     }
 
-    public function checkLogin(){               
+    public function checkLogin(){              
         
         if ((isset( $_POST['userEmail'])) && (isset($_POST['userPwd'])))    
         {
@@ -61,15 +62,15 @@ class LoginController{
                     session_start();
                     $_SESSION['islogged'] = true;
                     $_SESSION['isAdmin'] = true;
-                    $_SESSION['email'] = $email;
-                    $this->adminView->showAdminUsers(null);
+                    $_SESSION['email'] = $email;                    
+                    $this->homeView->showHome();
                     
                 }
                 session_start();
                 $_SESSION['islogged'] = true;
-                $_SESSION['email'] = $email;
-                $logged = true;
-                $this->homeView->showHome($user, $logged);
+                $_SESSION['email'] = $email;                
+                $this->homeView->showHome();
+                
                 
             }else{
                 $this->loginView->showLogin();

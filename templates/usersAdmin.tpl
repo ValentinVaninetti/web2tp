@@ -2,7 +2,7 @@
 
 <body>
     {include file="./header.tpl"}
-    {include file="./adminNavLinks.tpl"}
+    
 
     <table class="table table-dark">
             <thead>

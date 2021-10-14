@@ -1,10 +1,10 @@
 {include file="./head.tpl"}
+{include file="./header.tpl"}
+ 
 
 <body class="homeBody">
-{include file="./header.tpl"}
-{include file="./navbar.tpl"} 
 
-<section class="h-100 gradient-form" style="background-color: rgb(9, 99, 172);">
+<section class="h-100 gradient-form" style="background-color: rgb(0,0,0,0.5);">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100" >
       <div class="col-xl-10">

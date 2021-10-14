@@ -2,7 +2,9 @@
 
 <body>
     {include file="./header.tpl" }
-    {include file="./adminNavLinks.tpl"}
+    
+    
+    
 
     <section class="adminTable">
     

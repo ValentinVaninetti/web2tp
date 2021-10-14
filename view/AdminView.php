@@ -8,6 +8,9 @@ class AdminView{
         $this->smarty = new Smarty();
     }
     public function showAdminProducts($products ,$condicion, $categories){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $this->smarty->assign('all_products', $products);
         $this->smarty->assign('condicion', $condicion);
         $this->smarty->assign('allCategories', $categories);
@@ -16,11 +19,17 @@ class AdminView{
     }
 
     public function showAdminUsers($adminUsers){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $this->smarty->assign('all_users', $adminUsers);
         $this->smarty->display("../templates/usersAdmin.tpl");
     }
 
     public function showAdminCategories($adminCategories){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $this->smarty->assign('all_categories', $adminCategories);
         $this->smarty->display("../templates/categoriesAdmin.tpl");
     }
