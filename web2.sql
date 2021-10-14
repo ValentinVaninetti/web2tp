@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 14, 2021 at 01:23 AM
+-- Generation Time: Oct 14, 2021 at 10:20 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -38,9 +38,10 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`category_id`, `category_name`, `description`) VALUES
-(13, 'Surf Tables ', 'Different types of surf tables!'),
+(13, 'Surf Tables', '	Different types of surf tables.'),
 (14, 'Surf Suits', 'Different types and sizes of surf suits! '),
-(15, 'Surf Accesories', 'SurfBoard Wax, Fins, Cords and more!');
+(15, 'Surf Accesories', 'SurfBoard Wax, Fins, Cords and more!'),
+(16, 'Kite boards', 'Different types of kite boards!');
 
 -- --------------------------------------------------------
 
@@ -62,8 +63,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`products_id`, `product_name`, `category_id`, `product_price`, `product_img`, `product_description`) VALUES
-(18, 'Hyperlite Wingman Jr', 13, 580, 'https://www.miamiskinautiques.com/v/vspfiles/photos/Q5AlXotym7-3T.png?v-cache=1616062852', 'Scott Bouchard has shaped a board that drives speed and creates lift for airs, all wrapped up in a compact size for maximum mobility. Meant to be ridden as a twin fin in the forward placements or as a quad fin with smaller fin sets. The fin placements mirror high performance surfboards, delivering great tracking and speed with explosive acceleration. \"Go Big or Go Home\" Butch says with respects to his latest creation. The compact outline is very manoeuvrable thanks to its hard wing rear outline and it has enough width and volume to provide a stable ride for beginners. The Wingman\'s deep single concave bottom with vented tail channel gives it tons of drive even when riding straight towards the boat. Grab the Wingman for driving into the air section and going huge.'),
-(19, 'Hyperlite Automatic', 13, 750, 'https://www.miamiskinautiques.com/v/vspfiles/photos/WJL8ah5BjZ-2T.png', 'Another brainchild from Scott Bouchard, the Automatic delivers a floaty surf vibe spawned from the beaches and wakes of Florida. Featuring our all new Full Carbon DuraShell Construction, the Automatic looks and surfs better than the rest. DuraShell includes top and bottom carbon laminates and is finished with seamless edges eliminating flash lines, rolling smooth from edge to edge. With a Full Bamboo Base Inlay the Automatic has a lively feel when snapping turns and popping airs. The single concave running through the midsection delivers great push in the wake. Customize your ride with four Futures Fin Boxes including 2 Flux Fins and 2 Minis for a loose or solid feel.'),
+(18, 'Hyperlite Wingman Jr', 16, 580, 'https://www.miamiskinautiques.com/v/vspfiles/photos/Q5AlXotym7-3T.png?v-cache=1616062852', 'Scott Bouchard has shaped a board that drives speed and creates lift for airs, all wrapped up in a compact size for maximum mobility. Meant to be ridden as a twin fin in the forward placements or as a quad fin with smaller fin sets. The fin placements mirror high performance surfboards, delivering great tracking and speed with explosive acceleration. \"Go Big or Go Home\" Butch says with respects to his latest creation. The compact outline is very manoeuvrable thanks to its hard wing rear outline and it has enough width and volume to provide a stable ride for beginners. The Wingman\'s deep single concave bottom with vented tail channel gives it tons of drive even when riding straight towards the boat. Grab the Wingman for driving into the air section and going huge.'),
+(19, 'Hyperlite Wingman Jr', 16, 750, 'https://www.miamiskinautiques.com/v/vspfiles/photos/WJL8ah5BjZ-2T.png', 'Another brainchild from Scott Bouchard, the Automatic delivers a floaty surf vibe spawned from the beaches and wakes of Florida. Featuring Hyperlite’s all new Full Carbon DuraShell Construction, the Automatic looks and surfs better than the rest. DuraShell includes top and bottom carbon laminates and is finished with seamless edges eliminating flash lines, rolling smooth from edge to edge. With a Full Bamboo Base Inlay, the Automatic has a lively feel when snapping turns and popping airs. The single concave running through the midsection delivers great push in the wake. Customize your ride with four Futures Fin Boxes including 2 Flux Fins and 2 Minis for a loose or solid feel.'),
 (20, 'Camaro Blacktec Overall 2.0mm Full Wetsuit', 14, 250, 'https://www.miamiskinautiques.com/v/vspfiles/photos/camaro2full-2T.jpg?v-cache=1616062852', 'The Camaro neoprene, and its exterior coating, which contribute to comfort, flexibility, and warmth is highly specific, and can be somewhat FRAGILE. Please be very carful with it. Do not pull material excessively, especially with fingertips and fingernails, as potential tears or punctures are not covered by Camaro’s Manufacture Warranty policy. If your item does not fit, and you need to return it, that is fine. For an exchange or credit, please be sure your item is free of rips, tears, or punctures.'),
 (21, ' Camaro Titanium pro mono 0.5mm Wetsuit', 14, 280, 'https://www.miamiskinautiques.com/v/vspfiles/photos/camaro-titaniumpr-mono-wetsuit-2T.png?v-cache=1616062852', 'The Camaro neoprene, and its exterior coating, which contribute to comfort, flexibility, and warmth is highly specific, and can be somewhat FRAGILE. Please be very carful with it. Do not pull material excessively, especially with fingertips and fingernails, as potential tears or punctures are not covered by Camaro’s Manufacture Warranty policy. If your item does not fit, and you need to return it, that is fine. For an exchange or credit, please be sure your item is free of rips, tears, or punctures.'),
 (22, 'Inspired Florida Board Black Dart Surfboard', 13, 850, 'https://cdn.shopify.com/s/files/1/0003/1902/9309/products/inspired_fl_board_blu_5000x.png?v=1631549648', 'Excellent quality surfboard.'),
@@ -92,13 +93,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `email`, `pass`, `isAdmin`) VALUES
-(1, 'Mario', 'mario@gmail.com', '123456', 0),
-(2, 'algo', 'algo@gmail.com', '12345', 0),
-(16, 'fidelo', 'fidelo@gmail.com', 'fidexo', 0),
-(19, 'Valentin', 'valentin@gmail.com', 'valentin', 0),
 (20, 'aaaaaa', 'aaaaaaaaaaaa@gmail.com', '$2y$10$c2k18Rgmp6QN/ZbATbzpSuChx9tiPHcVTkSfAyhNJHwNzGwda8Av.', 0),
-(21, 'hola', 'hola@gmail.com', '$2y$10$IohN.1jyXiUgknLndZAHzOZYD7ebYSdsO1Iqq18CLZL9AHDkoJUmG', 0),
-(22, 'admin', 'admin@admin.com', '$2y$10$vGPWgVye0wly59tKZLgJ9.x4JBHhfxiihkGNA8BgzshXtKQFnxZH.', 1);
+(22, 'admin', 'admin@admin.com', '$2y$10$vGPWgVye0wly59tKZLgJ9.x4JBHhfxiihkGNA8BgzshXtKQFnxZH.', 1),
+(24, 'Hey', 'hey@gmail.com', '$2y$10$/wHBCfaBzsIWweIlUlu3JO3AnFJqH5hTbwmnCKKolvbm9AO0HN5oK', 0),
+(26, 'fidelo', 'fidelo@gmail.com', '$2y$10$o9qUYGzY757He4uKX2OAQe9JACOipMHApwc//fYmd4LOj8Z579.Fy', 0),
+(27, 'Andres', 'andres@gmail.com', '$2y$10$m7ixO/bDPWKqBHkybcONA.rpR2xcy5reMVHHU1rb.aYK1FlQ5Ph.C', 0),
+(28, 'John', 'john@gmail.com', '$2y$10$PhdBKgRpoeJ2jboEdu/u/.sYwpzuwvi8DkrDMX0r9s9x.giszB5ya', 0);
 
 --
 -- Indexes for dumped tables
@@ -131,19 +131,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
