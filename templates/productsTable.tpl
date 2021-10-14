@@ -5,7 +5,7 @@
       <th scope="col">Name</th>
       <th scope="col">Price</th>      
       <th scope="col">Category</th>
-      <td scope="col">Image</th>
+      <th scope="col">Image</th>
       <th scope="col">Description</th>
       <th scope="col">Buttons</th>
     </tr>
@@ -25,43 +25,48 @@
         <td><p>{$product->product_description}</p></td>
         <td>    
             <form method="POST" action="deleteProduct">
-              <button type="submit" id={$product->products_id}>Delete</button>        
-              <input type="hidden" name="productid" value={$product->products_id}>
+              <button type="submit" id={$product->product_id} class="btn btn-secondary">Delete</button>        
+              <input type="hidden" name="productid" value={$product->product_id}>
             </form>   
                   
             <form method="POST" action="editProduct">
-              <select name="categoryEdit">
-                <option value=""></option>
+              <select name="categoryEdit" class="custom-select" style="width: 300px;">
+                <option value="">Select category</option>
                   {foreach from=$allCategories item=$category}
                     <option value="{$category->category_id}">{$category->category_name}</option>                  
                   {/foreach}                
               </select>
-              <input name="productNameEdit" type="text" placeholder="{$product->product_name}">            
-              <input name="productPriceEdit" type="text" placeholder="{$product->product_price}">
-              <input name="imgUrlEdit" type="text" placeholder="{$product->product_img}">
-              <input name="productDescriptionEdit" type="text" placeholder="{$product->product_description}">
-              <input type="hidden" name="productidEdit" value={$product->products_id}>
-              <button type="submit" id="{$product->products_id}">Edit</button>
+              <input name="productNameEdit" class="form-control" style="width: 300px;" type="text" placeholder="{$product->product_name}">            
+              <input name="productPriceEdit" class="form-control" style="width: 300px;" type="text" placeholder="{$product->product_price}">
+              <input name="imgUrlEdit" class="form-control" style="width: 300px;" type="text" placeholder="{$product->product_img}">
+              <input name="productDescriptionEdit" class="form-control" style="width: 300px;" type="text" placeholder="{$product->product_description}">
+              <input type="hidden" name="productidEdit" value={$product->product_id}>
+              <button type="submit" class="btn btn-secondary" id="{$product->product_id}">Edit</button>
             </form>
         </td>        
       </tr>
     {/foreach}    
   </tbody>
 </table>
-<div>
-  <div class="divAdd">
-      <form method="POST" action="addProduct" enctype="multipart/form-data">
-          <select name="category">
-              <option value=""></option>
-              {foreach from=$allCategories item=$category}
-              <option value="{$category->category_id}">{$category->category_name}</option>                  
-              {/foreach}                
-          </select>
-          <input name="productName" type="text" placeholder="Product name">
-          <input name="productPrice" type="text" placeholder="Product Price">
-          <input name="imgUrl" type="text" placeholder="image url">
-          <input name="productDescription" type="text" placeholder="Product Description">
-          <button type="submit" id="button-add">add</button>
-      </form>
-  </div>          
-<div>
+<div class="mb-4">
+    <label class="font-weight-bold ml-3">
+      Add new product
+    </label>
+    <form method="POST" action="addProduct" enctype="multipart/form-data"  class="d-flex flex-row">
+        <select name="category"  class="custom-select col-2">
+            <option value="">Select Category</option>
+            {foreach from=$allCategories item=$category}
+            <option value="{$category->category_id}">{$category->category_name}</option>                  
+            {/foreach}                
+        </select>
+        <input name="productName"  class="form-control col-2 ml-1" type="text" placeholder="Product name">
+        <input name="productPrice"  class="form-control col-2 ml-1" type="text" placeholder="Product Price">
+        <input name="imgUrl"  class="form-control col-2 ml-1"  type="text" placeholder="image url">
+        <input name="productDescription"  class="form-control col-2 ml-1" type="text" placeholder="Product Description">
+        <button type="submit" id="button-add" 
+                class="btn btn-secondary  ml-2">
+          Add
+        </button>
+    </form>
+</div>          
+

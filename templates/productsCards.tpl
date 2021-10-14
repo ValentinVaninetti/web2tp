@@ -1,13 +1,13 @@
 <div>
   <form method="POST" action="search">
-    <div class="d-flex flex-row">
-      <select name="category-id">
+    <div class="d-flex flex-row col-4">
+      <select class="form-control" name="category-id">
         <option value="">Get all products</option>
           {foreach from=$allCategories item=$category}
             <option value="{$category->category_id}">{$category->category_name}</option>                  
           {/foreach}                
       </select>      
-    <button type="submit">Search</button>
+      <button class="btn btn-primary ml-2" type="submit">Search</button>
     </div>
   </form>
 </div>

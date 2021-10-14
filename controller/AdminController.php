@@ -101,8 +101,8 @@ class AdminController{
     public function adminDeletesProducts()
     {
         $this->authHelper->checkLoggedIn();
-        $products_id = $_POST['productid'];
-        $this->adminModel->deleteProduct($products_id);
+        $product_id = $_POST['productid'];
+        $this->adminModel->deleteProduct($product_id);
         $this->getAllAdminProducts();
 
     }

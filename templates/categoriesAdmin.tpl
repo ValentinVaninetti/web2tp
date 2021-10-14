@@ -6,7 +6,8 @@
         <thead>
             <tr>      
                 <th scope="col">Category Name</th>
-                <th scope="col">Category Description</th>                  
+                <th scope="col">Category Description</th>   
+                <th scope="col">Admin Buttons</th>               
             </tr>
         </thead>
         <tbody> 
@@ -20,14 +21,14 @@
                     </td>
                     <td>
                         <form method="POST" action="deleteCategory">
-                            <button type="submit" id={$category->category_id}>Delete</button>        
+                            <button type="submit" class="btn btn-secondary" id={$category->category_id}>Delete</button>        
                             <input type="hidden" name="category-id" value={$category->category_id}>
                         </form>
                         <form method="POST" action="editCategory">
-                            <input name="category_name" type="text" placeholder="{$category->category_name}">
-                            <input name="category_description" type="text" placeholder="{$category->description}">
+                            <input name="category_name" class="form-control" style="width: 300px;" type="text" placeholder="{$category->category_name}">
+                            <input name="category_description" class="form-control" style="width: 300px;" type="text" placeholder="{$category->description}">
                             <input type="hidden" name="category-id" value={$category->category_id}>
-                            <button type="submit" id="{$category->category_id}">Edit</button>
+                            <button type="submit" class="btn btn-secondary" id="{$category->category_id}">Edit</button>
                         </form>
                     </td>            
                 </tr>       
@@ -36,9 +37,9 @@
     </table>
     <div class="divAdd">
         <form method="POST" action="addCategory" enctype="multipart/form-data">       
-            <input name="category-name" type="text" placeholder="category name">
-            <input name="category-description" type="text" placeholder="category description">       
-            <button type="submit" id="button-add">add</button>
+            <input name="category-name" class="form-control" style="width: 300px;" type="text" placeholder="category name">
+            <input name="category-description" class="form-control" style="width: 300px;" type="text" placeholder="category description">       
+            <button type="submit"  class="btn btn-secondary" id="button-add">add</button>
         </form>
     </div> 
         {include file="./footer.tpl"}

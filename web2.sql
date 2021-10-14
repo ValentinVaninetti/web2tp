@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 14, 2021 at 10:20 PM
+-- Generation Time: Oct 15, 2021 at 12:26 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -50,7 +50,7 @@ INSERT INTO `category` (`category_id`, `category_name`, `description`) VALUES
 --
 
 CREATE TABLE `products` (
-  `products_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `product_name` varchar(255) NOT NULL,
   `category_id` int(11) DEFAULT NULL,
   `product_price` int(255) NOT NULL,
@@ -62,7 +62,7 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`products_id`, `product_name`, `category_id`, `product_price`, `product_img`, `product_description`) VALUES
+INSERT INTO `products` (`product_id`, `product_name`, `category_id`, `product_price`, `product_img`, `product_description`) VALUES
 (18, 'Hyperlite Wingman Jr', 16, 580, 'https://www.miamiskinautiques.com/v/vspfiles/photos/Q5AlXotym7-3T.png?v-cache=1616062852', 'Scott Bouchard has shaped a board that drives speed and creates lift for airs, all wrapped up in a compact size for maximum mobility. Meant to be ridden as a twin fin in the forward placements or as a quad fin with smaller fin sets. The fin placements mirror high performance surfboards, delivering great tracking and speed with explosive acceleration. \"Go Big or Go Home\" Butch says with respects to his latest creation. The compact outline is very manoeuvrable thanks to its hard wing rear outline and it has enough width and volume to provide a stable ride for beginners. The Wingman\'s deep single concave bottom with vented tail channel gives it tons of drive even when riding straight towards the boat. Grab the Wingman for driving into the air section and going huge.'),
 (19, 'Hyperlite Wingman Jr', 16, 750, 'https://www.miamiskinautiques.com/v/vspfiles/photos/WJL8ah5BjZ-2T.png', 'Another brainchild from Scott Bouchard, the Automatic delivers a floaty surf vibe spawned from the beaches and wakes of Florida. Featuring Hyperlite’s all new Full Carbon DuraShell Construction, the Automatic looks and surfs better than the rest. DuraShell includes top and bottom carbon laminates and is finished with seamless edges eliminating flash lines, rolling smooth from edge to edge. With a Full Bamboo Base Inlay, the Automatic has a lively feel when snapping turns and popping airs. The single concave running through the midsection delivers great push in the wake. Customize your ride with four Futures Fin Boxes including 2 Flux Fins and 2 Minis for a loose or solid feel.'),
 (20, 'Camaro Blacktec Overall 2.0mm Full Wetsuit', 14, 250, 'https://www.miamiskinautiques.com/v/vspfiles/photos/camaro2full-2T.jpg?v-cache=1616062852', 'The Camaro neoprene, and its exterior coating, which contribute to comfort, flexibility, and warmth is highly specific, and can be somewhat FRAGILE. Please be very carful with it. Do not pull material excessively, especially with fingertips and fingernails, as potential tears or punctures are not covered by Camaro’s Manufacture Warranty policy. If your item does not fit, and you need to return it, that is fine. For an exchange or credit, please be sure your item is free of rips, tears, or punctures.'),
@@ -114,7 +114,7 @@ ALTER TABLE `category`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`products_id`),
+  ADD PRIMARY KEY (`product_id`),
   ADD KEY `FK_category_id` (`category_id`);
 
 --
@@ -131,13 +131,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `products_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `users`
