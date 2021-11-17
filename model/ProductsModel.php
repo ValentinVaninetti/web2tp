@@ -25,6 +25,29 @@ class ProductsModel{
         return $statement->fetchAll(PDO::FETCH_OBJ);
        
     }
+    
+    public function addProduct($product_name,$category_id,$product_price, $product_img, $product_description)
+    {
+        $statement = $this->db->prepare("INSERT INTO products(product_name,category_id,product_price,product_img, product_description) VALUES (?,?,?,?,?)");
+        $statement->execute(
+            array($product_name, $category_id, $product_price, $product_img, $product_description)
+        );
+    }  
+
+    public function deleteProduct($product_id)
+    {
+        $statement = $this->db->prepare("DELETE FROM products WHERE product_id = ?");
+        $statement->execute(
+            array($product_id)
+        );
+    }
+    public function editProduct($productName, $categoryid,$productPrice, $imgUrl, $productDescription, $productid)
+    {          
+       $statement = $this->db->prepare("UPDATE products SET product_name=?, category_id=?, product_price=?, product_img=?,product_description=? WHERE product_id = ?");
+       $statement->execute(
+           array($productName, $categoryid,$productPrice, $imgUrl, $productDescription, $productid)); 
+    }
+       
 
   
 }

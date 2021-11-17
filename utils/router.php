@@ -34,8 +34,9 @@
 
     //admin management of users//
     $r->addRoute("usersAdmin", "GET", "AdminController", "getAdminUsers");
-    //admin management of categories//
+    $r->addRoute("editUser", "POST", "AdminController", "adminGivesPrivileges");
 
+    //admin management of categories//
     $r->addRoute("categoriesAdmin", "GET", "AdminController", "getAdminCategories");
     $r->addRoute("addCategory", "POST", "AdminController", "adminAddCategories");
     $r->addRoute("deleteCategory", "POST", "AdminController", "adminDeletesCategories");

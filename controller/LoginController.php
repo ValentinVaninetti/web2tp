@@ -43,8 +43,16 @@ class LoginController{
         $email = $_POST['email'];
         $password = password_hash($_POST['password'],PASSWORD_BCRYPT);
         $isAdmin = 0;
-        $this->userModel->addNewUser($username,$email,$password,$isAdmin);
-        $this->loginView->showLogin();
+        if(!empty($username) && !empty($email) && !empty($password)){
+            $this->userModel->addNewUser($username,$email,$password,$isAdmin);
+            session_start();
+                $_SESSION['islogged'] = true;
+                $_SESSION['email'] = $email;                
+                    $this->homeView->showHome();           
+        }else{
+            $this->loginView->showSignup();
+        }
+       
         
     }
 

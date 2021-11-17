@@ -31,6 +31,11 @@ class UserModel{
         return $statement->fetch(PDO::FETCH_OBJ);
     }
 
+    function convertToAdmin($id){
+        $statement = $this->db->prepare("UPDATE users SET isAdmin = 1 WHERE id_user = ?");
+        $statement->execute(array($id));
+    }
+
      
     
 }

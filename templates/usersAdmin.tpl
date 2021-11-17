@@ -7,7 +7,8 @@
                 <tr>      
                     <th scope="col">Username</th>
                     <th scope="col">Email</th>      
-                    <th scope="col">isAdmin</th>      
+                    <th scope="col">isAdmin</th>    
+                    <th scope="col">AdminButtons</th>  
                 </tr>
             </thead>
             <tbody> 
@@ -21,6 +22,17 @@
                         </td>
                         <td>
                             {$user->isAdmin}
+                        </td>
+                        <td>
+                        <form method="POST" action="editUser">
+                            <select name="adminEdit" class="custom-select" style="width: 300px;">  
+                                <option value="">Convert to Admin?</option>    
+                                <option value="1">1</option> 
+                                <option value="0">0</option>   
+                            </select>  
+                            <input type="hidden" name="userEdit" value={$user->id_user}> 
+                            <button type="submit" class="btn btn-secondary" id="{$user->id_user}">Edit</button>           
+                        </form>
                         </td>
                     </tr>                
                 {/foreach}
