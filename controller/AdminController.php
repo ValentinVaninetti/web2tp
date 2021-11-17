@@ -5,6 +5,7 @@ require_once "../model/ProductsModel.php";
 require_once "../view/AdminView.php";
 require_once "../controller/CategoriesController.php";
 require_once "../controller/UserController.php";
+require_once "../model/UserModel.php";
 require_once "../helper/AuthHelper.php";
 
 class AdminController{
@@ -15,6 +16,8 @@ class AdminController{
     private $userController;
     private $authHelper;
     private $categoriesModel;
+    private $userModel;
+
 
     public function __construct()
     {
@@ -24,6 +27,7 @@ class AdminController{
         $this->userController = new UserController(); 
         $this->authHelper = new AuthHelper();
         $this->categoriesModel = new CategoriesModel();
+        $this->userModel = new UserModel();
     }
 
     public function getAdminUsers()
@@ -139,17 +143,23 @@ class AdminController{
     }
 
     function adminGivesPrivileges(){
-        $this->authHelper->checkLoggedIn();
-        $userid = $_POST['userid'];
-        $admin = $_POST['adminEdit'];
-        if(!empty($userid)){
-            if($admin == 1){
-                $this->userModel->convertToAdmin($userid);
-                $this->userController->getAllUsers();
-            }
-        
+       
+            $userid = $_POST['userid'];
+            $admin = $_POST['adminEdit'];            
+            $this->userModel->convertToAdmin($userid, $admin);            
+            $this->adminView->showUserLocation();         
+       
+          
+    }
+
+    function adminDeletesUsers(){
+        $userid = $_POST['user_id'];
+        $isAdmin = $_POST['isAdmin'];
+        if($isAdmin == 0){
+            $this->userModel->deleteUser($userid);
+            $this->adminView->showUserLocation();  
         }else{
-            $this->userController->getAllUsers();
+            $this->adminView->showUserLocation();
         }
     }
         

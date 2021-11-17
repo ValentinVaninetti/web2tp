@@ -18,6 +18,10 @@ class AdminView{
         
     }
 
+    function showUserLocation(){
+        header("Location: usersAdmin");
+    }
+
     public function showAdminUsers($adminUsers){
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -32,7 +36,7 @@ class AdminView{
         }
         $this->smarty->assign('all_categories', $adminCategories);
         $this->smarty->display("../templates/categoriesAdmin.tpl");
-    }
+    }   
 
    
 }

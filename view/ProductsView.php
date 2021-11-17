@@ -22,4 +22,12 @@ class ProductsView {
         $this->smarty->display("../templates/products.tpl");
                 
     }
+
+    public function showDetailedProduct($product){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }        
+        $this->smarty->assign('product', $product);
+        $this->smarty->display("../templates/productDetails.tpl");
+    }
 }

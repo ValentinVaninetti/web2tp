@@ -11,11 +11,18 @@ class ProductsModel{
 
         $this->db = DataBase::getDataBase();
     }
+    
 
     public function getProducts(){
         $statement = $this->db->prepare("SELECT * FROM products"); //selecciona todo de la tabla productos
         $statement->execute(); // ejecuta lo que le dije que se prepare
         return $statement->fetchAll(PDO::FETCH_OBJ); // retorna lo que ejecuto en el $statement
+    }
+
+    public function getProductById($id){
+        $statement = $this->db->prepare("SELECT * FROM products WHERE product_id = ?"); 
+        $statement->execute(array($id)); 
+        return $statement->fetchAll(PDO::FETCH_OBJ); 
     }
 
     public function getFilteredProducts($filter_id = null){   
@@ -47,7 +54,7 @@ class ProductsModel{
        $statement->execute(
            array($productName, $categoryid,$productPrice, $imgUrl, $productDescription, $productid)); 
     }
-       
+    
 
   
 }

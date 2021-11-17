@@ -21,6 +21,7 @@
 
     //products && admin management of products//
     $r->addRoute("products", "GET","ProductsController", "getAllProducts");
+    $r->addRoute("productDetails", "POST","ProductsController", "getProductById");
     $r->addRoute("productsAdmin", "GET", "AdminController", "getAllAdminProducts");
     $r->addRoute("addProduct", "POST", "AdminController", "adminAddProducts");
     $r->addRoute("deleteProduct", "POST", "AdminController", "adminDeletesProducts");
@@ -35,6 +36,7 @@
     //admin management of users//
     $r->addRoute("usersAdmin", "GET", "AdminController", "getAdminUsers");
     $r->addRoute("editUser", "POST", "AdminController", "adminGivesPrivileges");
+    $r->addRoute("deleteUser", "POST", "AdminController", "adminDeletesUsers");
 
     //admin management of categories//
     $r->addRoute("categoriesAdmin", "GET", "AdminController", "getAdminCategories");

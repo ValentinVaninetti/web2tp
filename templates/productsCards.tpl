@@ -21,13 +21,15 @@
          <div class="caption">
            <h4>
               {$product->product_name}
-           </h6>
-           <h5>
-              {$product->product_description}
-           </h5>           
+           </h6>         
              <span class="price-sale">
               ${$product->product_price}USD
             </span>
+            <form method="POST" action="productDetails">
+              <input type="hidden" name="product_id" value="{$product->product_id}">
+              <button type="submit"  name ="product_id" value="{$product->product_id}"> Ver Mas</button>
+            </form>
+            <button type="submit" name="product_id" value="{$product->product_id}">Ver Comentarios<></button>
          </div>
        </div>
      </div>  

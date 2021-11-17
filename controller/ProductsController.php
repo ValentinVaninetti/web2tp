@@ -41,5 +41,13 @@ class ProductsController{
         
     } 
 
+    public function getProductById(){        
+            $id = $_POST['product_id'];           
+            $product = $this->productsModel->getProductById($id);           
+            
+            $this->productsView->showDetailedProduct($product);
+        
+    }
+
     
 }

@@ -25,13 +25,14 @@
                         </td>
                         <td>
                         <form method="POST" action="editUser">
-                            <select name="adminEdit" class="custom-select" style="width: 300px;">  
-                                <option value="">Convert to Admin?</option>    
-                                <option value="1">1</option> 
-                                <option value="0">0</option>   
-                            </select>  
-                            <input type="hidden" name="userEdit" value={$user->id_user}> 
+                            <input name="adminEdit" class="form-control" style="width: 300px;" type="text" placeholder="{$user->isAdmin}">
+                            <input type="hidden" name="userid" value="{$user->id_user}"> 
                             <button type="submit" class="btn btn-secondary" id="{$user->id_user}">Edit</button>           
+                        </form>
+                        <form method="POST" action="deleteUser">
+                            <input type="hidden" name="isAdmin" value="{$user->isAdmin}">
+                            <input type="hidden" name="user_id" value="{$user->id_user}"> 
+                            <button type="submit" class="btn btn-secondary" id="{$user->id_user}">Delete</button>
                         </form>
                         </td>
                     </tr>                
