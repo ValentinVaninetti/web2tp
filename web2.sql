@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 15, 2021 at 12:26 AM
+-- Generation Time: Nov 18, 2021 at 03:34 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -42,6 +42,19 @@ INSERT INTO `category` (`category_id`, `category_name`, `description`) VALUES
 (14, 'Surf Suits', 'Different types and sizes of surf suits! '),
 (15, 'Surf Accesories', 'SurfBoard Wax, Fins, Cords and more!'),
 (16, 'Kite boards', 'Different types of kite boards!');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `comment_id` int(11) NOT NULL,
+  `comment` varchar(2000) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -93,12 +106,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `email`, `pass`, `isAdmin`) VALUES
-(20, 'aaaaaa', 'aaaaaaaaaaaa@gmail.com', '$2y$10$c2k18Rgmp6QN/ZbATbzpSuChx9tiPHcVTkSfAyhNJHwNzGwda8Av.', 0),
+(20, 'aaaaaa', 'aaaaaaaaaaaa@gmail.com', '$2y$10$c2k18Rgmp6QN/ZbATbzpSuChx9tiPHcVTkSfAyhNJHwNzGwda8Av.', 1),
 (22, 'admin', 'admin@admin.com', '$2y$10$vGPWgVye0wly59tKZLgJ9.x4JBHhfxiihkGNA8BgzshXtKQFnxZH.', 1),
-(24, 'Hey', 'hey@gmail.com', '$2y$10$/wHBCfaBzsIWweIlUlu3JO3AnFJqH5hTbwmnCKKolvbm9AO0HN5oK', 0),
-(26, 'fidelo', 'fidelo@gmail.com', '$2y$10$o9qUYGzY757He4uKX2OAQe9JACOipMHApwc//fYmd4LOj8Z579.Fy', 0),
-(27, 'Andres', 'andres@gmail.com', '$2y$10$m7ixO/bDPWKqBHkybcONA.rpR2xcy5reMVHHU1rb.aYK1FlQ5Ph.C', 0),
-(28, 'John', 'john@gmail.com', '$2y$10$PhdBKgRpoeJ2jboEdu/u/.sYwpzuwvi8DkrDMX0r9s9x.giszB5ya', 0);
+(26, 'fidelo', 'fidelo@gmail.com', '$2y$10$o9qUYGzY757He4uKX2OAQe9JACOipMHApwc//fYmd4LOj8Z579.Fy', 1),
+(28, 'John', 'john@gmail.com', '$2y$10$PhdBKgRpoeJ2jboEdu/u/.sYwpzuwvi8DkrDMX0r9s9x.giszB5ya', 1),
+(30, '123', '123@123.com', '$2y$10$fTSbGDkIPqkdhJwLwfIycuVPGyBGtNNpmgCfRIQ7QUnEOqRpFq0qK', 0);
 
 --
 -- Indexes for dumped tables
@@ -109,6 +121,14 @@ INSERT INTO `users` (`id_user`, `username`, `email`, `pass`, `isAdmin`) VALUES
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`comment_id`),
+  ADD KEY `FK_id_user` (`id_user`) USING BTREE,
+  ADD KEY `FK_product_id` (`product_id`);
 
 --
 -- Indexes for table `products`
@@ -131,23 +151,30 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `products`
