@@ -28,11 +28,12 @@
             <form method="POST" action="productDetails">
               <input type="hidden" name="product_id" value="{$product->product_id}">
               <button type="submit"  name ="product_id" value="{$product->product_id}"> Ver Mas</button>
-            </form>
-            <form method="POST" action="productComments">
-            <input type="hidden" name="product_id" value="{$product->product_id}">
-            <button type="submit" name="product_id" value="{$product->product_id}">Ver Comentarios<></button>
-            </form>
+            </form>       
+            
+            <button type="button" name="product_id" 
+            class="button_comments"value="{$product->product_id}" 
+            id="{$product->product_id}">Ver Comentarios</button>
+            
          </div>
        </div>
      </div>  
