@@ -33,26 +33,42 @@ class ProductsModel{
        
     }
     
-    public function addProduct($product_name,$category_id,$product_price, $product_img, $product_description)
+    function addProduct($product_name,$category_id,$product_price, $product_img = null, $product_description = null)
     {
+        $imgPath ="";
+        if($product_img){
+            $imgPath = $this->uploadImage($product_img);
+        }
         $statement = $this->db->prepare("INSERT INTO products(product_name,category_id,product_price,product_img, product_description) VALUES (?,?,?,?,?)");
         $statement->execute(
-            array($product_name, $category_id, $product_price, $product_img, $product_description)
+            array($product_name, $category_id, $product_price, $imgPath, $product_description)
         );
     }  
+    
+    function uploadImage($product_img){
+        $target_dir = "productImg/";              
+        $imageFileType = uniqid("", true).".".strtolower(pathinfo($product_img['name'],PATHINFO_EXTENSION));
+        move_uploaded_file($product_img['tmp_name'], $target_dir . $imageFileType);
+        return $imageFileType;       
 
-    public function deleteProduct($product_id)
+    }
+
+    function deleteProduct($product_id)
     {
         $statement = $this->db->prepare("DELETE FROM products WHERE product_id = ?");
         $statement->execute(
             array($product_id)
         );
     }
-    public function editProduct($productName, $categoryid,$productPrice, $imgUrl, $productDescription, $productid)
+    function editProduct($productName, $categoryid,$productPrice, $product_img, $productDescription, $productid)
     {          
+        $imgPath ="";
+        if($product_img){
+            $imgPath = $this->uploadImage($product_img);
+        }
        $statement = $this->db->prepare("UPDATE products SET product_name=?, category_id=?, product_price=?, product_img=?,product_description=? WHERE product_id = ?");
        $statement->execute(
-           array($productName, $categoryid,$productPrice, $imgUrl, $productDescription, $productid)); 
+           array($productName, $categoryid,$productPrice, $imgPath, $productDescription, $productid)); 
     }
     
 

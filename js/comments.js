@@ -74,7 +74,9 @@ document.addEventListener("DOMContentLoaded",iniciarPagina);
             'headers': {'Content-Type' : 'application/json'},
             'body' : JSON.stringify(newComment)
             });
-                if (Post.ok) {
+            if (Post.ok) {
+                app.comments.push(newComment);
+                
                 console.log(r);
             }
         }catch(error){
@@ -106,11 +108,15 @@ document.addEventListener("DOMContentLoaded",iniciarPagina);
         let response = await fetch(url+"/"+id_comment,{
             'method' : 'DELETE'
         });
-        if (response.ok) {
+            if (response.ok) {
+                let comment = app.comments;
+                for(let i = 0; i < comment.length; i++){
+                    if(comment[i].comment_id == id_comment){
+                        comment.splice(i,1);
+                    }
+                }   
             
-            console.log("Eliminado");
-        
-        }
+            }
         }catch(error){
             console.log(error.message);
         }

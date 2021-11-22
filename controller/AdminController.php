@@ -85,10 +85,12 @@ class AdminController{
         session_start();
         if(isset($_SESSION['isAdmin'])){
             $condicion = $_SESSION['isAdmin'];
+            $adminProducts = $this->productsModel->getProducts();
+            $categories = $this->categoriesController->getAllCategories();
+            
+            $this->adminView->showAdminProducts($adminProducts,$condicion, $categories);   
         }
-        $adminProducts = $this->productsModel->getProducts();
-        $categories = $this->categoriesController->getAllCategories();
-        $this->adminView->showAdminProducts($adminProducts,$condicion, $categories);       
+            
     }    
 
     public function adminAddProducts()
@@ -97,12 +99,21 @@ class AdminController{
         $product_name = $_POST['productName'];
         $category_id = $_POST['category'];
         $product_price = $_POST['productPrice'];
-        $product_img = $_POST['imgUrl'];
+        $product_img = $_FILES['productImage'];
         $product_description = $_POST['productDescription'];
 
-        if((!empty($product_name))&&(!empty($category_id))&&(!empty($product_price))&&(!empty($product_img))&&(!empty($product_description))){
-            $this->productsModel->addProduct($product_name, $category_id, $product_price, $product_img, $product_description);
+        if((!empty($product_name))&&(!empty($category_id))&&(!empty($product_price))&&(!empty($_FILES['productImage']))&&(!empty($product_description))){
+            if ($_FILES['productImage']['type'] == "image/jpg" 
+            || $_FILES['productImage']['type'] == "image/jpeg"
+            || $_FILES['productImage']['type'] == "image/png") {
+            $this->productsModel->addProduct($product_name, $category_id, $product_price, $_FILES['productImage'], $product_description);
+            
             $this->getAllAdminProducts();
+            }
+            else{
+                $this->productsModel->addProduct($product_name, $category_id, $product_price, $product_description);
+                $this->getAllAdminProducts();
+            }
         }else{
             $this->getAllAdminProducts();
         }        
@@ -129,13 +140,16 @@ class AdminController{
         $productid = $_POST['productidEdit'];
         $productName = $_POST['productNameEdit'];
         $categoryid = $_POST['categoryEdit'];
-        $productPrice = $_POST['productPriceEdit'];
-        $imgUrl = $_POST['imgUrlEdit'];
+        $productPrice = $_POST['productPriceEdit'];        
         $productDescription = $_POST['productDescriptionEdit'];
 
-          if((!empty($productid))&&(!empty($productName))&&(!empty($categoryid))&&(!empty($productPrice))&&(!empty($imgUrl))&&(!empty($productDescription))){
-            $this->productsModel->editProduct($productName, $categoryid, $productPrice, $imgUrl, $productDescription, $productid);
+          if((!empty($productid))&&(!empty($productName))&&(!empty($categoryid))&&(!empty($productPrice))&&(!empty($_FILES['productImage']))&&(!empty($productDescription))){
+            if ($_FILES['productImage']['type'] == "image/jpg" 
+            || $_FILES['productImage']['type'] == "image/jpeg"
+            || $_FILES['productImage']['type'] == "image/png") {
+            $this->productsModel->editProduct($productName, $categoryid, $productPrice, $_FILES['productImage'], $productDescription, $productid);
             $this->getAllAdminProducts();
+            }
           }else{
             $this->getAllAdminProducts();
           }

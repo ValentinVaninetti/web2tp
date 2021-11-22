@@ -8,17 +8,16 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body overflow-auto " style="max-height:200px ;">
         {include file="./comments.tpl"}
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <div class="modal-footer">       
         {if isset($smarty.session.islogged)}
          
-          <div class="container">
+          <div class="container" >
           <div class="container" id="contact_container">
-              <div class="row justify-content-center">
-                  <div class="col-12 col-md-8 col-lg-8 pb-5">
+              <div class="row">
+                  <div>
                       <form>
                           <div class="card border-secondary rounded-0">
                               <div class="card-header p-0">
@@ -59,7 +58,8 @@
               </div>
           </div>
       </div>
-          <button type="button" data-objetcId="" id="button_submit_comment" data-dismiss="modal">Send Comment</button>          
+          <button type="button" data-objetcId="" class="btn btn-primary" id="button_submit_comment">Send Comment</button>  
+          <button type="button" data-dismiss="modal" class="btn btn-danger" >Close</button>         
           <input type="hidden" id="id_user" value="{$smarty.session.id}">
           
         {/if}

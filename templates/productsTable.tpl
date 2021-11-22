@@ -21,7 +21,7 @@
            {/if}       
         {/foreach}
         
-        <td><img src="{$product->product_img}" width="200" height="200"></td>
+        <td><img src="../productImg/{$product->product_img}" class="img-responsive product-img" width="200" height="200"></td>
         <td><p>{$product->product_description}</p></td>
         <td>    
             <form method="POST" action="deleteProduct">
@@ -38,7 +38,8 @@
               </select>
               <input name="productNameEdit" class="form-control" style="width: 300px;" type="text" placeholder="{$product->product_name}">            
               <input name="productPriceEdit" class="form-control" style="width: 300px;" type="text" placeholder="{$product->product_price}">
-              <input name="imgUrlEdit" class="form-control" style="width: 300px;" type="text" placeholder="{$product->product_img}">
+              <label for="exampleFormControlFile1">Example file input</label>
+                <input type="file" name="productImage" class="form-control-file" id="exampleFormControlFile1">
               <input name="productDescriptionEdit" class="form-control" style="width: 300px;" type="text" placeholder="{$product->product_description}">
               <input type="hidden" name="productidEdit" value={$product->product_id}>
               <button type="submit" class="btn btn-secondary" id="{$product->product_id}">Edit</button>
@@ -60,8 +61,11 @@
             {/foreach}                
         </select>
         <input name="productName"  class="form-control col-2 ml-1" type="text" placeholder="Product name">
-        <input name="productPrice"  class="form-control col-2 ml-1" type="text" placeholder="Product Price">
-        <input name="imgUrl"  class="form-control col-2 ml-1"  type="text" placeholder="image url">
+        <input name="productPrice"  class="form-control col-2 ml-1" type="text" placeholder="Product Price">        
+        <label for="exampleFormControlFile1">Example file input</label>
+        <input type="file" name="productImage" class="form-control-file" id="exampleFormControlFile1">
+          
+        
         <input name="productDescription"  class="form-control col-2 ml-1" type="text" placeholder="Product Description">
         <button type="submit" id="button-add" 
                 class="btn btn-secondary  ml-2">
