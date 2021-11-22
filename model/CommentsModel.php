@@ -1,8 +1,7 @@
 <?php
 
-
+require_once "../utils/DataBase.php";
 class CommentsModel{
-
 
     private $db;
 
@@ -17,8 +16,14 @@ class CommentsModel{
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
 
-    function addComentario(){
-        
+    function addComentario($comment, $id_user, $rating, $product_id){
+        $statement = $this->db->prepare("INSERT INTO comments (comment, id_user, rating, product_id) VALUES (?,?,?,?)");
+        $statement->execute(array($comment, $id_user, $rating, $product_id));
     }
+    function deleteComment($comment_id){
+        $statement = $this->db->prepare("DELETE FROM comments WHERE comment_id = ?");
+        $statement->execute(array($comment_id));
+    }      
+    
     
 }

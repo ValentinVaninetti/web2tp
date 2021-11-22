@@ -14,7 +14,7 @@
      
 <div class="container">
    <h1 class="text-center text-muted">Product catalog</h1>
-   <div class="row flow-offset-1">
+   <div class="row flow-offset-1">   
    {foreach from=$all_products item=$product}   
      <div class="col-xs-6 col-md-4">
        <div class="product tumbnail thumbnail-3"><img src={$product->product_img} alt="" style="height: 200px">
@@ -27,18 +27,26 @@
             </span>
             <form method="POST" action="productDetails">
               <input type="hidden" name="product_id" value="{$product->product_id}">
-              <button type="submit"  name ="product_id" value="{$product->product_id}"> Ver Mas</button>
+              <button type="submit" class="btn btn-secondary" name ="product_id" value="{$product->product_id}"> Show More!</button>
             </form>       
+            {include file="./modal.tpl"}
             
-            <button type="button" name="product_id" 
-            class="button_comments"value="{$product->product_id}" 
-            id="{$product->product_id}">Ver Comentarios</button>
+            <button type="button" name="product_id"
+                    data-toggle="modal" data-target="#exampleModal"
+                    class="button_comments btn btn-primary"                    
+                    value="{$product->product_id}" 
+                    id="{$product->product_id}"
+                    data-objectid="{$product->product_id}"
+                    >Show Comments
+            </button>
+                 
             
          </div>
        </div>
      </div>  
     {/foreach}  
  </div>
+ 
   
 </div>
 

@@ -70,12 +70,16 @@ class LoginController{
                     session_start();
                     $_SESSION['islogged'] = true;
                     $_SESSION['isAdmin'] = true;
+                    $_SESSION['id'] = $user->id_user;
+                    $_SESSION['username'] = $user->username;
                     $_SESSION['email'] = $email;                    
                     $this->homeView->showHome();
                     
                 }else{
                 session_start();
                 $_SESSION['islogged'] = true;
+                $_SESSION['id'] = $user->id_user;
+                $_SESSION['username'] = $user->username;
                 $_SESSION['email'] = $email;                
                 $this->homeView->showHome();
                 }

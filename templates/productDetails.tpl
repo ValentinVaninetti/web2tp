@@ -17,6 +17,16 @@
                 </span>            
             </div>
             <a href="products">Go Back</a>
+            
+            {include file="./modal.tpl"}
+            
+            <button type="button" name="product_id"
+                    data-toggle="modal" data-target="#exampleModal"
+                    class="button_comments btn btn-primary"                    
+                    value="{$details->product_id}" 
+                    id="{$details->product_id}"
+                    >Show Comments
+            </button>     
         
         
     {/foreach}
