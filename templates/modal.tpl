@@ -58,7 +58,7 @@
               </div>
           </div>
       </div>
-          <button type="button" data-objetcId="" class="btn btn-primary" id="button_submit_comment">Send Comment</button>  
+          <button type="button" data-objetcId="" class="btn btn-primary" id="button_submit_comment"  data-dismiss="modal">Send Comment</button>  
           <button type="button" data-dismiss="modal" class="btn btn-danger" >Close</button>         
           <input type="hidden" id="id_user" value="{$smarty.session.id}">
           

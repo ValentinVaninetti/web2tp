@@ -32,6 +32,13 @@ class ProductsModel{
         return $statement->fetchAll(PDO::FETCH_OBJ);
        
     }
+
+    public function getSpecialSearch($special = null){
+        $statement = $this->db->prepare("SELECT * FROM products LEFT JOIN category ON products.category_id = category.category_id WHERE product_name LIKE '%$special%' OR product_price LIKE '%$special%'
+        OR product_description LIKE '%$special%'");
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_OBJ);; 
+    }
     
     function addProduct($product_name,$category_id,$product_price, $product_img = null, $product_description = null)
     {

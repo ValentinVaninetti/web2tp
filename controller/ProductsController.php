@@ -41,11 +41,23 @@ class ProductsController{
         
     } 
 
+    public function getListBySearch(){
+        if (isset($_POST['special']) && $_POST['special'] != "") {
+            $special = $_POST['special'];
+        } else {
+            $special = null;
+        }
+        var_dump($special);
+        $data = $this->productsModel->getSpecialSearch($special);
+        $categories = $this->categoriesController->getAllCategories();
+        $this->productsView->showProducts($data,$categories);
+    }
+
     public function getProductById(){        
-            $id = $_POST['product_id'];           
-            $product = $this->productsModel->getProductById($id);           
-            
-            $this->productsView->showDetailedProduct($product);
+        $id = $_POST['product_id'];           
+        $product = $this->productsModel->getProductById($id);           
+        
+        $this->productsView->showDetailedProduct($product);
         
     }
 

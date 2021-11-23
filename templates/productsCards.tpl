@@ -10,6 +10,13 @@
       <button class="btn btn-primary ml-2" type="submit">Search</button>
     </div>
   </form>
+  <form action="advancedSearch" method="post">
+      <div class="search-group">
+        <input type="text" name="special" placeholder="Advanced Search">
+        <button class="btn btn-secondary btn-info-search" type="submit">Search</button>
+      </div>
+
+  </form>
 </div>
      
 <div class="container">
