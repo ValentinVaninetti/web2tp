@@ -32,12 +32,6 @@ document.addEventListener("DOMContentLoaded",iniciarPagina);
         return id_product;       
         
     }
-
-    let button_comments = document.querySelector("#button_submit_comment");   
-    if(button_comments !=null){        
-        button_comments.addEventListener("click", addComment);
-    }
-
     async function fetchComments(event) {  
         let id_product = getCommentsId(event); 
         let button_comments = document.querySelector("#button_submit_comment"); 
@@ -56,7 +50,11 @@ document.addEventListener("DOMContentLoaded",iniciarPagina);
         await fetchComments(event);        
         addDeleteButton();
     }
-    
+
+    let button_comments = document.querySelector("#button_submit_comment");   
+    if(button_comments !=null){        
+        button_comments.addEventListener("click", addComment);
+    }
 
     async function addComment(event) {
         event.preventDefault();        
@@ -121,6 +119,12 @@ document.addEventListener("DOMContentLoaded",iniciarPagina);
             console.log(error.message);
         }
         
+    }
+    let button_order_by_date = document.querySelector("#button_order_by_date");
+    button_order_by_date.addEventListener("click", orderByDate);
+
+    function orderByDate(){
+       
     }
 
    

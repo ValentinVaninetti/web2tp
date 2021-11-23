@@ -21,7 +21,7 @@
            {/if}       
         {/foreach}
         
-        <td><img src="../productImg/{$product->product_img}" class="img-responsive product-img" width="200" height="200"></td>
+        <td><img src="Img/{$product->product_img}" class="img-responsive product-img" width="200" height="200"></td>
         <td><p>{$product->product_description}</p></td>
         <td>    
             <form method="POST" action="deleteProduct">
@@ -29,7 +29,7 @@
               <input type="hidden" name="productid" value={$product->product_id}>
             </form>   
                   
-            <form method="POST" action="editProduct">
+            <form method="POST" action="editProduct"  enctype="multipart/form-data">
               <select name="categoryEdit" class="custom-select" style="width: 300px;">
                 <option value="">Select category</option>
                   {foreach from=$allCategories item=$category}
@@ -39,7 +39,7 @@
               <input name="productNameEdit" class="form-control" style="width: 300px;" type="text" placeholder="{$product->product_name}">            
               <input name="productPriceEdit" class="form-control" style="width: 300px;" type="text" placeholder="{$product->product_price}">
               <label for="exampleFormControlFile1">Example file input</label>
-                <input type="file" name="productImage" class="form-control-file" id="exampleFormControlFile1">
+                <input type="file" name="productEditImage" class="form-control-file" id="exampleFormControlFile1">
               <input name="productDescriptionEdit" class="form-control" style="width: 300px;" type="text" placeholder="{$product->product_description}">
               <input type="hidden" name="productidEdit" value={$product->product_id}>
               <button type="submit" class="btn btn-secondary" id="{$product->product_id}">Edit</button>

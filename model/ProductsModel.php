@@ -46,9 +46,9 @@ class ProductsModel{
     }  
     
     function uploadImage($product_img){
-        $target_dir = "productImg/";              
-        $imageFileType = uniqid("", true).".".strtolower(pathinfo($product_img['name'],PATHINFO_EXTENSION));
-        move_uploaded_file($product_img['tmp_name'], $target_dir . $imageFileType);
+        $target_dir = "../Img/";              
+        $imageFileType = uniqid().".".strtolower(pathinfo($product_img['name'],PATHINFO_EXTENSION));
+        move_uploaded_file($product_img['tmp_name'], $target_dir . $imageFileType);        
         return $imageFileType;       
 
     }
@@ -60,15 +60,16 @@ class ProductsModel{
             array($product_id)
         );
     }
-    function editProduct($productName, $categoryid,$productPrice, $product_img, $productDescription, $productid)
+    function editProduct($productName, $categoryid,$productPrice, $product_img = null, $productDescription, $productid)
     {          
         $imgPath ="";
-        if($product_img){
+        if($product_img)
+        
             $imgPath = $this->uploadImage($product_img);
-        }
+        
        $statement = $this->db->prepare("UPDATE products SET product_name=?, category_id=?, product_price=?, product_img=?,product_description=? WHERE product_id = ?");
        $statement->execute(
-           array($productName, $categoryid,$productPrice, $imgPath, $productDescription, $productid)); 
+           array($productName, $categoryid , $productPrice, $imgPath, $productDescription, $productid)); 
     }
     
 

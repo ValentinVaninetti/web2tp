@@ -98,16 +98,14 @@ class AdminController{
         $this->authHelper->checkLoggedIn();
         $product_name = $_POST['productName'];
         $category_id = $_POST['category'];
-        $product_price = $_POST['productPrice'];
-        $product_img = $_FILES['productImage'];
+        $product_price = $_POST['productPrice'];        
         $product_description = $_POST['productDescription'];
 
         if((!empty($product_name))&&(!empty($category_id))&&(!empty($product_price))&&(!empty($_FILES['productImage']))&&(!empty($product_description))){
             if ($_FILES['productImage']['type'] == "image/jpg" 
             || $_FILES['productImage']['type'] == "image/jpeg"
             || $_FILES['productImage']['type'] == "image/png") {
-            $this->productsModel->addProduct($product_name, $category_id, $product_price, $_FILES['productImage'], $product_description);
-            
+            $this->productsModel->addProduct($product_name, $category_id, $product_price, $_FILES['productImage'], $product_description);            
             $this->getAllAdminProducts();
             }
             else{
@@ -137,22 +135,22 @@ class AdminController{
     {
         $this->authHelper->checkLoggedIn();
         $categories = $this->categoriesController->getAllCategories();
-        $productid = $_POST['productidEdit'];
-        $productName = $_POST['productNameEdit'];
-        $categoryid = $_POST['categoryEdit'];
-        $productPrice = $_POST['productPriceEdit'];        
-        $productDescription = $_POST['productDescriptionEdit'];
+        $product_id= $_POST['productidEdit'];
+        $product_name = $_POST['productNameEdit'];
+        $category_id= $_POST['categoryEdit'];
+        $product_price = $_POST['productPriceEdit'];        
+        $product_description = $_POST['productDescriptionEdit'];
 
-          if((!empty($productid))&&(!empty($productName))&&(!empty($categoryid))&&(!empty($productPrice))&&(!empty($_FILES['productImage']))&&(!empty($productDescription))){
+        /*if((!empty($product_id))&&(!empty($product_name))&&(!empty($category_id))&&(!empty($product_price))&&(!empty($_FILES['productImage']))&&(!empty($product_description))){
             if ($_FILES['productImage']['type'] == "image/jpg" 
             || $_FILES['productImage']['type'] == "image/jpeg"
-            || $_FILES['productImage']['type'] == "image/png") {
-            $this->productsModel->editProduct($productName, $categoryid, $productPrice, $_FILES['productImage'], $productDescription, $productid);
+            || $_FILES['productImage']['type'] == "image/png") {*/
+            $this->productsModel->editProduct($product_name, $category_id, $product_price, $_FILES['productEditImage'], $product_description, $product_id);            
             $this->getAllAdminProducts();
-            }
+            /*}
           }else{
             $this->getAllAdminProducts();
-          }
+          }*/
                
     }
 

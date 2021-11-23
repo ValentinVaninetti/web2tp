@@ -23,10 +23,22 @@ class CommentApiController extends ApiController{
             $this->commentsView->response("e", 404);
         }
     }
+    public function orderCommentsBy($params = null){
+        $dateNow = date("Y-m-d H:i:s");
+        $orderedComments = $this->commentsModel->orderCommentsBy($params[":ID"], $dateNow);
+        if(!empty($orderedComments)){
+            
+            $this->commentsView->response($orderedComments, 200);
+        }else{
+            $this->commentsView->response("e", 404);
+        }
+
+    }
 
     public function addComment($params = null){
-        $comment = $this->getData();        
-        $this->commentsModel->addComentario($comment->comment, $comment->user_id, $comment->rating, $comment->product_id);
+        $comment = $this->getData();
+        $date = date("Y-m-d H:i:s");        
+        $this->commentsModel->addComentario($comment->comment, $comment->user_id, $comment->rating, $comment->product_id, $date);
         $this->commentsView->response($comment, 200);
     }
 

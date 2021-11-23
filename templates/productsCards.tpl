@@ -15,13 +15,13 @@
 <div class="container">
    <h1 class="text-center text-muted">Product catalog</h1>
    <div class="row flow-offset-1">   
-   {foreach from=$all_products item=$product}   
+    {foreach from=$all_products item=$product}   
      <div class="col-xs-6 col-md-4">
-       <div class="product tumbnail thumbnail-3"><img src={$product->product_img} alt="" style="height: 200px">
-         <div class="caption">
+       <div class="product tumbnail thumbnail-3 border border-dark" style="height: 100%;" ><img src="Img/{$product->product_img}" alt="" style="height: 200px">
+         <div class="caption ">
            <h4>
               {$product->product_name}
-           </h6>         
+           </h4>         
              <span class="price-sale">
               ${$product->product_price}USD
             </span>
@@ -32,14 +32,13 @@
             {include file="./modal.tpl"}
             
             <button type="button" name="product_id"
-                    data-toggle="modal" data-target="#exampleModal"
-                    class="button_comments btn btn-primary"                    
-                    value="{$product->product_id}" 
-                    id="{$product->product_id}"
-                    data-objectid="{$product->product_id}"
-                    >Show Comments
-            </button>
-                 
+              data-toggle="modal" data-target="#exampleModal"
+              class="button_comments btn btn-primary"                    
+              value="{$product->product_id}" 
+              id="{$product->product_id}"
+              data-objectid="{$product->product_id}"
+              >Show Comments
+            </button>    
             
          </div>
        </div>

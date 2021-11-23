@@ -16,10 +16,15 @@ class CommentsModel{
         $statement->execute(array($product_id));
         return $statement->fetchAll(PDO::FETCH_OBJ);
     }
+    function orderCommentsBy($product_id){
+        $statement = $this->db->prepare("SELECT * FROM comments WHERE product_id=? ORDER BY date ASC");
+        $statement->execute($product_id);
+        return $statement->fetchAll(PDO::FETCH_OBJ);
+    }
 
-    function addComentario($comment, $id_user, $rating, $product_id){
-        $statement = $this->db->prepare("INSERT INTO comments (comment, id_user, rating, product_id) VALUES (?,?,?,?)");
-        $statement->execute(array($comment, $id_user, $rating, $product_id));
+    function addComentario($comment, $id_user, $rating, $product_id, $date){
+        $statement = $this->db->prepare("INSERT INTO comments (comment, id_user, rating, product_id, date) VALUES (?,?,?,?,?)");
+        $statement->execute(array($comment, $id_user, $rating, $product_id, $date));
     }
     function deleteComment($comment_id){
         $statement = $this->db->prepare("DELETE FROM comments WHERE comment_id = ?");
