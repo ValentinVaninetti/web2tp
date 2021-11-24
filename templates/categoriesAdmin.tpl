@@ -1,5 +1,5 @@
     {include file="./head.tpl"}
-<body>
+<body class="adminBody">
     {include file="./header.tpl"}
     
     <table class="table table-dark">

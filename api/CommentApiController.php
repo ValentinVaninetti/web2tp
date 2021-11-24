@@ -15,14 +15,13 @@ class CommentApiController extends ApiController{
     }
 
 
-    public function showComments($params){
+   /* public function showComments($params = null){
         $product_id = $params[":ID"];
-        $comments = $this->commentsModel->getProductComments($product_id);
-        var_dump($comments);
+        $comments = $this->commentsModel->getProductComments($product_id);       
         $this->commentsView->response($comments,200);
-    }
+    }*/
 
-    /*public function showProductComments($params = null){
+    public function showProductComments($params = null){
         
         if(isset($_GET['order']) && isset($_GET['sort'])){
             $order = $_GET['order'];
@@ -30,17 +29,17 @@ class CommentApiController extends ApiController{
             
         }
         else{
-            $order = 'comment_id';
-            $criteria = 'ASC';     
+            $order = "comment_id";
+            $criteria = "ASC";     
             
         }          
-        $comments = $this->commentsModel->getProductComments($params[":ID"]);
+        $comments = $this->commentsModel->getProductComments($params[":ID"], $order, $criteria);
         if(!empty($comments)){
             $this->commentsView->response($comments, 200);
         }else{
             $this->commentsView->response("e", 404);
         }
-    }*/
+    }
    
 
     public function addComment($params = null){

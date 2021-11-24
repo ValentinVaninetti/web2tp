@@ -18,7 +18,6 @@
             <li>
             Valentin Vaninetti
             </li>
-
         </ul>
     </div>
 </footer>

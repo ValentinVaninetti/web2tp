@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded",iniciarPagina);
             comments: [                
             
             ]
-        }/*,
+        },
         methods: {
             orderBy:orderBy,
-        }*/
-    })
+        }
+    });
   
     function getTargetedButton(){
         let button_comments = document.querySelectorAll(".button_comments");
@@ -33,15 +33,13 @@ document.addEventListener("DOMContentLoaded",iniciarPagina);
         
     }
     async function fetchComments(event) {  
-        let id_product = getCommentsId(event); 
-        console.log(id_product)       
+        let id_product = getCommentsId(event);              
         let button_comments = document.querySelector("#button_submit_comment"); 
             if (button_comments != null){                
                 button_comments.setAttribute('data-objetcId', id_product); 
             }
        try{
-        let response = await fetch(URL + "/" + id_product);   
-        console.log(response);              
+        let response = await fetch(URL + "/" + id_product);                     
         let productComment = await response.json(); 
         console.log("AA",productComment);                     
         app.comments = productComment;  
@@ -54,13 +52,10 @@ document.addEventListener("DOMContentLoaded",iniciarPagina);
     
     async function waitFetch(event){
         
-        event.preventDefault();       
-        try{ 
+        event.preventDefault();        
             await fetchComments(event);        
             addDeleteButton();
-        }catch(error){
-            console.log("nope")
-        }
+        
     }
 
     let button_comments = document.querySelector("#button_submit_comment");   
@@ -134,8 +129,8 @@ document.addEventListener("DOMContentLoaded",iniciarPagina);
     async function orderBy(event){
         event.preventDefault();      
         let product_id = document.querySelector(".card-header").id;                
-        app.comments =[] ;         
-        let orderForm = new FormData(formOrder);
+               
+        let orderForm = new FormData(document.querySelector("#formOrder"));
         let order  = orderForm.get("orderBy");
         let criteria = document.querySelector("#customSwitch3");  
        
@@ -151,15 +146,12 @@ document.addEventListener("DOMContentLoaded",iniciarPagina);
             let orderedComment = await response.json();                  
             app.comments = orderedComment;  
         }catch(error){
-            console.log("GIL")
+            console.log("nope")
         }     
         
        
     }
-
    
-       
-        
     
   
 }

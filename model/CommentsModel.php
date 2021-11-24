@@ -10,16 +10,12 @@ class CommentsModel{
         $this->db = DataBase::getDataBase();
     }
 
-    public function getProductComments($product_id){  
-       //var_dump($product_id);
-        /*$statement = $this->db->prepare("SELECT * FROM comments 
+    public function getProductComments($product_id, $order, $criteria){  
+       
+        $statement = $this->db->prepare("SELECT * FROM comments 
         LEFT JOIN users ON users.id_user = comments.id_user 
-        WHERE product_id=? ORDER BY $order $criteria");*/
-        //$statement = $this->db->prepare("SELECT * FROM comments LEFT JOIN users ON users.id_user = comments.id_user WHERE product_id =?");
-        $statement = $this->db->prepare("SELECT * FROM comments WHERE product_id = ?");
-        $statement->execute($product_id);
-        echo $statement->fetchAll(PDO::FETCH_OBJ);
-        die();
+        WHERE product_id=? ORDER BY $order $criteria");          
+        $statement->execute(array($product_id));        
         return $statement->fetchAll(PDO::FETCH_OBJ);
         
        

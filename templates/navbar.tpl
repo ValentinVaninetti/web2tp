@@ -22,6 +22,9 @@
     {if isset($smarty.session.isAdmin) && $smarty.session.isAdmin}
     {include file="./adminNavLinks.tpl"}
     {/if}
+    <div class="logo-box" >
+      <img class="logo" src="./images/logo.png">
+    </div>
   </div>
 
 </nav>

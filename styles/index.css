@@ -21,6 +21,22 @@
     background-position: center center;
     background-attachment: fixed;
 }
+.adminBody{
+    background-image: url("../images/adminBackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+
+}
+
+.logo{
+      
+    justify-content: flex-end;
+    width: 100px;
+    height: 100px;
+    
+}
 
 .header{
     display: flex;
@@ -102,4 +118,7 @@
     font-size: 30px;
 }
 
+.modal-container{
+    width: 1024px;
+}
 

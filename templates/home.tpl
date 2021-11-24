@@ -4,7 +4,8 @@
     
     {include file="./slides.tpl"}
   
-    {include file="./footer.tpl"}
+    
     
 </body>
+{include file="./footer.tpl"}
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
