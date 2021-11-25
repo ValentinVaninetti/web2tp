@@ -4,7 +4,6 @@ require_once "../view/AdminView.php";
 require_once "../view/HomeView.php";
 require_once "../view/LoginView.php";
 require_once "../model/UserModel.php";
-require_once "../controller/HomeController.php";
 require_once "../controller/UserController.php";
 require_once "../helper/AuthHelper.php";
 
@@ -22,8 +21,7 @@ class LoginController{
         $this->loginView = new LoginView();
         $this->userModel = new UserModel();        
         $this->homeView = new HomeView();
-        $this->adminView = new AdminView();
-        $this->homeController = new HomeController();   
+        $this->adminView = new AdminView();       
         $this->authHelper = new AuthHelper();    
         
     } 

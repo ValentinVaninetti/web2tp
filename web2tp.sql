@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 23, 2021 at 11:53 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 25-11-2021 a las 03:48:27
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `web2`
+-- Base de datos: `web2tp`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Estructura de tabla para la tabla `category`
 --
 
 CREATE TABLE `category` (
@@ -34,7 +34,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `category`
+-- Volcado de datos para la tabla `category`
 --
 
 INSERT INTO `category` (`category_id`, `category_name`, `description`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `category` (`category_id`, `category_name`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
+-- Estructura de tabla para la tabla `comments`
 --
 
 CREATE TABLE `comments` (
@@ -59,7 +59,7 @@ CREATE TABLE `comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `comments`
+-- Volcado de datos para la tabla `comments`
 --
 
 INSERT INTO `comments` (`comment_id`, `comment`, `product_id`, `id_user`, `rating`, `date`) VALUES
@@ -80,7 +80,7 @@ INSERT INTO `comments` (`comment_id`, `comment`, `product_id`, `id_user`, `ratin
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Estructura de tabla para la tabla `products`
 --
 
 CREATE TABLE `products` (
@@ -93,7 +93,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `products`
+-- Volcado de datos para la tabla `products`
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `category_id`, `product_price`, `product_img`, `product_description`) VALUES
@@ -103,13 +103,12 @@ INSERT INTO `products` (`product_id`, `product_name`, `category_id`, `product_pr
 (22, 'Inspired Florida Board Black Dart Surfboard', 13, 850, '619c483f9cf92.png', 'Excellent quality surfboard.'),
 (23, 'Sex Wax Original Surf Wax - Cold', 15, 2, '619c48613a577.jpg', 'Originally formulated in 1972 these \"old school\" wax formulas are still relatively popular and provide effective levels of traction.'),
 (24, 'Sex Wax Original Surf Wax - Warm', 15, 2, '619c488567454.jpg', 'Originally formulated in 1972 these \"old school\" wax formulas are still relatively popular and provide effective levels of traction.'),
-(25, 'Channel Islands Mid Spine-Tek Surfboard', 13, 1595, '619c48ad737fd.jpg', 'The Channel Islands Mid Surfboard is a modern classic design resulting from a fun collaboration with Devon Howard, a southern California surfer that has spent the past two decades riding and refining boards of this genre.'),
-(26, 'Oneill Wetsuit', 14, 320, '619c48e26a8e6.png', 'Classic wetsuit.');
+(25, 'Channel Islands Mid Spine-Tek Surfboard', 13, 1595, '619c48ad737fd.jpg', 'The Channel Islands Mid Surfboard is a modern classic design resulting from a fun collaboration with Devon Howard, a southern California surfer that has spent the past two decades riding and refining boards of this genre.');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `users`
 --
 
 CREATE TABLE `users` (
@@ -121,7 +120,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id_user`, `username`, `email`, `pass`, `isAdmin`) VALUES
@@ -130,21 +129,20 @@ INSERT INTO `users` (`id_user`, `username`, `email`, `pass`, `isAdmin`) VALUES
 (26, 'fidelo', 'fidelo@gmail.com', '$2y$10$o9qUYGzY757He4uKX2OAQe9JACOipMHApwc//fYmd4LOj8Z579.Fy', 1),
 (28, 'John', 'john@gmail.com', '$2y$10$PhdBKgRpoeJ2jboEdu/u/.sYwpzuwvi8DkrDMX0r9s9x.giszB5ya', 1),
 (30, '123', '123@123.com', '$2y$10$fTSbGDkIPqkdhJwLwfIycuVPGyBGtNNpmgCfRIQ7QUnEOqRpFq0qK', 0),
-(31, 'aaaaaa', 'aaaaaaaaaaaa@gmail.com', '$2y$10$PPES4.d1ClDO.JSXFofI5uZI2Gtyl8UfSDtDYckJ0ZV5dn176/zR.', 0),
-(32, '123', '123@123.com', '$2y$10$J71OJs4pNkvVJl/q5tLEl.tqeZsOkTvuIH6HHe3w420qTjg9mTY9e', 0);
+(31, 'aaaaaa', 'aaaaaaaaaaaa@gmail.com', '$2y$10$PPES4.d1ClDO.JSXFofI5uZI2Gtyl8UfSDtDYckJ0ZV5dn176/zR.', 0);
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `category`
+-- Indices de la tabla `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
 
 --
--- Indexes for table `comments`
+-- Indices de la tabla `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_id`),
@@ -152,59 +150,59 @@ ALTER TABLE `comments`
   ADD KEY `FK_product_id` (`product_id`);
 
 --
--- Indexes for table `products`
+-- Indices de la tabla `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`),
   ADD KEY `FK_category_id` (`category_id`);
 
 --
--- Indexes for table `users`
+-- Indices de la tabla `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT de la tabla `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `comments`
+-- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
   MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `comments`
+-- Filtros para la tabla `comments`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `products`
+-- Filtros para la tabla `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE SET NULL ON UPDATE CASCADE;
